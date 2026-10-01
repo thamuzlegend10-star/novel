@@ -10,7 +10,6 @@
 <style>
   :root {
     --bg: #F6F1E7;
-    --bg-2: #EFE7D8;
     --ink: #2A2118;
     --ink-soft: #5A4E3F;
     --accent: #8A3324;
@@ -20,10 +19,9 @@
     --bar-fg: #EFE3CF;
     --ember: rgba(179, 89, 63, 0.35);
   }
-  :root:not([data-theme="light"]) {
-    @media (prefers-color-scheme: dark) {
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
       --bg: #17130F;
-      --bg-2: #1E1811;
       --ink: #EDE3D2;
       --ink-soft: #B7A88F;
       --accent: #D98A6E;
@@ -36,7 +34,6 @@
   }
   :root[data-theme="dark"] {
     --bg: #17130F;
-    --bg-2: #1E1811;
     --ink: #EDE3D2;
     --ink-soft: #B7A88F;
     --accent: #D98A6E;
