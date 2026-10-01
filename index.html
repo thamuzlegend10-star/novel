@@ -221,8 +221,8 @@
   <nav class="taskbar">
     <a href="#top" class="brand">Blind Hope</a>
     <div class="chapter-nav">
-      <a href="#ch1" class="active">Ch. 1 — Nicole</a>
-      <a href="#ch2-soon" aria-disabled="true" style="opacity:0.3; cursor:default;">Ch. 2 — coming soon</a>
+      <a href="#ch1">Ch. 1 — Nicole</a>
+      <a href="#ch2">Ch. 2 — Cici</a>
     </div>
   </nav>
 
@@ -285,13 +285,66 @@
       <p>But that story — the one Nicole helped set in motion without either of us fully realizing it — belongs to the next chapter.</p>
       <p>What Nicole left behind wasn't heartbreak. It was a body that could carry more than it used to, a friendship that survived its own worst moment, and a strange, permanent gratitude for a girl who said no in the kindest way a no has ever been said — the way certain doors, closed gently, teach you more about love than the ones left open ever could. She spent years afterward making sure that no wasn't the end of the story, only the sentence that taught me how to keep writing — the beginning of a harder, better one.</p>
 
-      <p class="chapter-end">End of Chapter One. Chapter Two continues soon.</p>
+      <p class="chapter-end">End of Chapter One.</p>
+    </article>
+
+    <div class="hero" id="ch2" style="margin-top: 80px;">
+      <p class="label">Chapter Two</p>
+      <h1>The Hint I Never Caught</h1>
+      <p class="sub">Some chapters are about what happened. This one is about what almost did — and never got the chance to, because I wasn't looking.</p>
+    </div>
+
+    <article>
+      <h2>I. The Friend Who Liked to Play</h2>
+      <p>Cici Aulia had been around since grade four, the same stretch of years that gave me Nicole, except Cici was a different kind of presence entirely — loud where Nicole was quiet, mischievous where Nicole was steady. She was the kind of friend who liked to tease, to push buttons just to watch your reaction, a little naughty in the harmless, grade-school way kids are naughty when they haven't learned subtlety yet. I liked her the way you like a friend who makes boring days less boring. Nothing more than that, as far as I knew.</p>
+
+      <h2>II. What I Didn't See</h2>
+      <p>Grade five. Somewhere in there, without my noticing a single sign of it, Cici developed a crush on me.</p>
+      <p>I want to say I was oblivious in some charming, forgivable way — but the truth is I was just young and self-absorbed in the specific way boys that age are, too busy existing inside my own head to notice when someone was quietly existing around the edges of it, hoping to be noticed. Whatever signs there were, I missed every one of them.</p>
+      <p>It took someone else to tell me. A break-time, school, nothing special about the day — and then my friend Kevin said it out of nowhere, the way guy friends do, like he was handing over a piece of gossip rather than a piece of information that might have mattered. <em>She likes you. Did you not know?</em></p>
+      <p>I didn't.</p>
+
+      <h2>III. Nothing Happened</h2>
+      <p>And that was it — nothing happened. No confession from her, no confession from me. I don't know if the moment simply passed because neither of us reached for it, or if by the time I knew, whatever she'd felt had already quietly folded itself away. We stayed what we'd always been: classmates, friends, nothing declared. Life moved on the way it does for kids who don't yet understand that some windows only open once.</p>
+
+      <h2>IV. Years Later, A Scroll</h2>
+      <p>Senior high school. I was bored one evening, doing the thing everyone does when there's nothing else to do — scrolling back through old names on Instagram, half out of nostalgia, half out of nothing at all. I found her account.</p>
+      <p>Cici had changed. The naughty, playful grade-schooler I remembered had grown into someone who did modeling and cosplay, photos styled and confident in a way that felt like looking at a stranger who happened to share a childhood with me. And there, somewhere in the photos, was the detail that actually stopped my scrolling: she had a boyfriend.</p>
+
+      <h2>V. The Regret That Didn't Stay</h2>
+      <p>Something in me ached at that — not heartbreak, nothing that dramatic, but a quieter kind of pain, the specific sting of realizing a door you never knew was open had already closed somewhere behind you. For a while I sat with it. <em>What if I'd noticed back then? What if Kevin's out-of-nowhere comment had landed on someone less oblivious?</em></p>
+      <p>But the ache didn't stay long, and I think that's the real shape of this chapter — not loss, but a small, honest regret that taught me something instead of haunting me. I had something to chase in the present. Someone else, something else, a version of myself still being built in rooms at midnight. I let Cici's chapter close the way it had always been quietly closing, one missed hint at a time, and I moved on.</p>
+      <p>Not every story needs an ending where you get the girl. Some stories just need you to notice the next time — and I think that's exactly what this one gave me.</p>
+
+      <p class="chapter-end">End of Chapter Two. Chapter Three continues soon.</p>
     </article>
   </main>
 
   <footer>Blind Hope — a life, told in chapters</footer>
 
 <script>
+  // Scrollspy — highlights the chapter link matching current scroll position
+  (function() {
+    var sections = [
+      { id: 'ch1', link: document.querySelector('a[href="#ch1"]') },
+      { id: 'ch2', link: document.querySelector('a[href="#ch2"]') }
+    ];
+    var els = sections.map(function(s) {
+      return { el: document.getElementById(s.id), link: s.link };
+    }).filter(function(s) { return s.el && s.link; });
+
+    function onScroll() {
+      var pos = window.scrollY + 120;
+      var current = els[0];
+      els.forEach(function(s) {
+        if (s.el.offsetTop <= pos) current = s;
+      });
+      els.forEach(function(s) { s.link.classList.toggle('active', s === current); });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
   // Idle ambient embers — decorative only, pointer-events disabled, respects reduced motion
   (function() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
