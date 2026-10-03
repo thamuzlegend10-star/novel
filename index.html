@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-site-lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -57,6 +57,39 @@
     padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 
+  /* ---------- Language toggle ---------- */
+  [data-site-lang="en"] [lang="id"] { display: none; }
+  [data-site-lang="id"] [lang="en"] { display: none; }
+
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: rgba(239,227,207,0.08);
+    border-radius: 999px;
+    padding: 3px;
+    flex-shrink: 0;
+  }
+  .lang-toggle button {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--bar-fg);
+    opacity: 0.55;
+    font-family: inherit;
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    padding: 5px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: opacity 0.2s ease, background 0.2s ease;
+  }
+  .lang-toggle button.active {
+    opacity: 1;
+    background: rgba(239,227,207,0.16);
+  }
+  .lang-toggle button:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 2px; }
+
   /* ---------- Taskbar ---------- */
   .taskbar {
     position: fixed;
@@ -66,6 +99,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
     padding: 0 clamp(16px, 4vw, 40px);
     background: var(--bar-bg);
     color: var(--bar-fg);
@@ -79,6 +113,7 @@
     letter-spacing: 0.01em;
     color: var(--bar-fg);
     text-decoration: none;
+    flex-shrink: 0;
   }
   .chapter-nav {
     display: flex;
@@ -86,6 +121,8 @@
     align-items: center;
     overflow-x: auto;
     scrollbar-width: none;
+    flex: 1;
+    min-width: 0;
   }
   .chapter-nav::-webkit-scrollbar { display: none; }
   .chapter-nav a {
@@ -217,6 +254,7 @@
   @media (max-width: 560px) {
     .brand { font-size: 1rem; }
     main { padding-top: 108px; }
+    .chapter-nav a { font-size: 0.78rem; }
   }
 </style>
 </head>
@@ -225,192 +263,335 @@
   <nav class="taskbar">
     <a href="#top" class="brand">Blind Hope</a>
     <div class="chapter-nav">
-      <a href="#ch1">Ch. 1 — Nicole</a>
-      <a href="#ch2">Ch. 2 — Cici</a>
-      <a href="#ch3">Ch. 3 — Evelyn</a>
-      <a href="#ch4">Ch. 4 — Kellen</a>
+      <a href="#ch1"><span lang="en">Ch. 1 — Nicole</span><span lang="id">Bab 1 — Nicole</span></a>
+      <a href="#ch2"><span lang="en">Ch. 2 — Cici</span><span lang="id">Bab 2 — Cici</span></a>
+      <a href="#ch3"><span lang="en">Ch. 3 — Evelyn</span><span lang="id">Bab 3 — Evelyn</span></a>
+      <a href="#ch4"><span lang="en">Ch. 4 — Kellen</span><span lang="id">Bab 4 — Kellen</span></a>
+    </div>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" data-set-lang="en" class="active">EN</button>
+      <button type="button" data-set-lang="id">ID</button>
     </div>
   </nav>
 
   <div class="ambient" id="ambient"></div>
 
   <main id="top">
+
+    <!-- ===================== CHAPTER ONE ===================== -->
     <div class="hero" id="ch1">
-      <p class="label">Chapter One</p>
-      <h1>The Weight I Built in the Dark</h1>
-      <p class="sub">A story about a rejection that didn't break anything — it just asked to be carried differently.</p>
+      <p class="label"><span lang="en">Chapter One</span><span lang="id">Bab Satu</span></p>
+      <h1><span lang="en">The Weight I Built in the Dark</span><span lang="id">Beban yang Kubangun dalam Gelap</span></h1>
+      <p class="sub">
+        <span lang="en">A story about a rejection that didn't break anything — it just asked to be carried differently.</span>
+        <span lang="id">Sebuah kisah tentang penolakan yang tidak menghancurkan apa pun — ia hanya meminta untuk dipikul dengan cara yang berbeda.</span>
+      </p>
     </div>
 
     <article>
-      <p>There are people who enter your life the way weather enters a season — not announced, not chosen, simply arrived — and by the time you notice them, they have already rearranged something in you. Nicole was weather like that. A slow front moving in before I knew to look at the sky.</p>
+      <p lang="en">There are people who enter your life the way weather enters a season — not announced, not chosen, simply arrived — and by the time you notice them, they have already rearranged something in you. Nicole was weather like that. A slow front moving in before I knew to look at the sky.</p>
+      <p lang="id">Ada orang-orang yang masuk ke dalam hidupmu seperti cuaca memasuki sebuah musim — tanpa diumumkan, tanpa dipilih, begitu saja tiba — dan pada saat kau menyadarinya, mereka sudah menata ulang sesuatu dalam dirimu. Nicole adalah cuaca semacam itu. Front yang bergerak pelan, jauh sebelum aku sempat menengadah ke langit.</p>
 
-      <h2>I. Before the Silence</h2>
-      <p>I don't remember the exact day I met her. That's the strange thing about elementary school — nothing announces itself as important while it's happening. Grade four, maybe. We were never close. Just normal friends, the kind you sit near but don't think much about — except for one thing I'm not proud of.</p>
-      <p>I was careless back then, the way kids are careless before they understand that consequences land on people and stay there. One recess, we were playing a cheap, improvised version of soccer — the kind with no real rules, just a plastic water bottle standing in for a ball. I kicked it without thinking, the way you kick something a hundred times without a second thought, except this time it caught her in the head. It was an accident. I knew that even then. But I remember her crying, and I remember standing there afterward not knowing what to do about it — not knowing how to fix something I hadn't meant to break in the first place. That helplessness stuck with me longer than I expected it to.</p>
-      <p>But there was another side to it, one I didn't have words for yet. Nicole was the first person who ever made me look at someone differently — not as a classmate, not as a name on a seating chart, but as someone I noticed. A small, quiet kind of attraction I didn't understand and definitely didn't act on. I never made a move. I don't think I even let myself call it anything at the time. It just sat there, unspoken, the first flicker of something I wouldn't recognize for what it was until years later.</p>
-      <p>Then elementary school ended, the way it does for everyone — abruptly, without ceremony — and we drifted. Different schools, different lives. Years passed. I didn't think about her every day. But she didn't disappear completely either. She just went quiet, the way old songs go quiet in your head until something plays them again.</p>
+      <h2 lang="en">I. Before the Silence</h2>
+      <h2 lang="id">I. Sebelum Keheningan</h2>
+      <p lang="en">I don't remember the exact day I met her. That's the strange thing about elementary school — nothing announces itself as important while it's happening. Grade four, maybe. We were never close. Just normal friends, the kind you sit near but don't think much about — except for one thing I'm not proud of.</p>
+      <p lang="id">Aku tidak ingat persis hari aku pertama bertemu dengannya. Itulah hal aneh soal sekolah dasar — tak ada yang mengumumkan dirinya penting saat sedang terjadi. Kelas empat, mungkin. Kami tidak pernah dekat. Hanya teman biasa, jenis yang kau duduk di dekatnya tapi tak terlalu kau pikirkan — kecuali satu hal yang tidak kubanggakan.</p>
+      <p lang="en">I was careless back then, the way kids are careless before they understand that consequences land on people and stay there. One recess, we were playing a cheap, improvised version of soccer — the kind with no real rules, just a plastic water bottle standing in for a ball. I kicked it without thinking, the way you kick something a hundred times without a second thought, except this time it caught her in the head. It was an accident. I knew that even then. But I remember her crying, and I remember standing there afterward not knowing what to do about it — not knowing how to fix something I hadn't meant to break in the first place. That helplessness stuck with me longer than I expected it to.</p>
+      <p lang="id">Aku ceroboh waktu itu, cara anak-anak ceroboh sebelum mereka paham bahwa akibat itu mendarat pada orang lain dan menetap di sana. Suatu kali saat istirahat, kami main bola kaki versi murahan — tanpa aturan jelas, hanya botol air plastik yang berperan sebagai bola. Aku menendangnya tanpa berpikir, cara kau menendang sesuatu ratusan kali tanpa pikir panjang, hanya saja kali ini botol itu mengenai kepalanya. Itu kecelakaan. Aku tahu itu bahkan saat itu juga. Tapi aku ingat dia menangis, dan aku ingat berdiri di sana sesudahnya tanpa tahu harus berbuat apa — tidak tahu cara memperbaiki sesuatu yang bahkan tidak pernah kumaksudkan untuk kurusak. Rasa tak berdaya itu melekat padaku lebih lama dari yang kukira.</p>
+      <p lang="en">But there was another side to it, one I didn't have words for yet. Nicole was the first person who ever made me look at someone differently — not as a classmate, not as a name on a seating chart, but as someone I noticed. A small, quiet kind of attraction I didn't understand and definitely didn't act on. I never made a move. I don't think I even let myself call it anything at the time. It just sat there, unspoken, the first flicker of something I wouldn't recognize for what it was until years later.</p>
+      <p lang="id">Tapi ada sisi lain dari semua itu, sisi yang belum kutemukan katanya. Nicole adalah orang pertama yang membuatku memandang seseorang secara berbeda — bukan sebagai teman sekelas, bukan sebagai nama di daftar absen, melainkan sebagai seseorang yang kuperhatikan. Ketertarikan kecil dan diam yang tidak kupahami dan sama sekali tidak kutindaklanjuti. Aku tak pernah bergerak. Kurasa aku bahkan tak membiarkan diriku menamainya apa pun saat itu. Ia hanya ada di sana, tak terucap, kilatan pertama dari sesuatu yang baru kukenali bertahun-tahun kemudian.</p>
+      <p lang="en">Then elementary school ended, the way it does for everyone — abruptly, without ceremony — and we drifted. Different schools, different lives. Years passed. I didn't think about her every day. But she didn't disappear completely either. She just went quiet, the way old songs go quiet in your head until something plays them again.</p>
+      <p lang="id">Lalu sekolah dasar berakhir, seperti biasanya bagi semua orang — tiba-tiba, tanpa seremoni — dan kami pun berjauhan. Sekolah berbeda, kehidupan berbeda. Tahun-tahun berlalu. Aku tak memikirkannya setiap hari. Tapi dia juga tidak benar-benar menghilang. Dia hanya menjadi sunyi, seperti lagu lama yang memudar dalam kepalamu sampai sesuatu memutarnya kembali.</p>
 
-      <h2>II. The Message</h2>
-      <p>Grade nine. I don't know what made me do it — maybe boredom, maybe nostalgia, maybe some part of me that wanted to know if the person I remembered was still in there. I opened Instagram and typed out a message to Nicole.</p>
-      <p>She replied.</p>
-      <p>We talked. Old memories resurfaced, the kind that feel sweeter with distance than they probably were in the moment. And somewhere in those conversations, a feeling shifted under me — the quiet elementary-school friendship started to feel like the beginning of a confession, one I wanted to say out loud.</p>
-      <p>So I did something objectively ridiculous, and completely sincere: I wrote her a poem.</p>
-      <p>It wasn't good. It was the kind of poem that starts with the oldest line in the world — roses are red, violets are blue — except I twisted it, because I wanted it to be mine. I replaced the flowers with minerals instead — gold, iron, something heavier and built to last. I don't remember the exact lines anymore, but I remember the feeling behind them — I was trying to say <em>you are rare, and I am something that doesn't bend easily, and I have been carrying this for longer than you know.</em></p>
-      <p>I sent it.</p>
+      <h2 lang="en">II. The Message</h2>
+      <h2 lang="id">II. Pesan Itu</h2>
+      <p lang="en">Grade nine. I don't know what made me do it — maybe boredom, maybe nostalgia, maybe some part of me that wanted to know if the person I remembered was still in there. I opened Instagram and typed out a message to Nicole.</p>
+      <p lang="id">Kelas sembilan. Aku tidak tahu apa yang membuatku melakukannya — mungkin bosan, mungkin nostalgia, mungkin ada bagian dari diriku yang ingin tahu apakah sosok yang kuingat masih ada di sana. Aku membuka Instagram dan mengetik pesan untuk Nicole.</p>
+      <p lang="en">She replied.</p>
+      <p lang="id">Dia membalas.</p>
+      <p lang="en">We talked. Old memories resurfaced, the kind that feel sweeter with distance than they probably were in the moment. And somewhere in those conversations, a feeling shifted under me — the quiet elementary-school friendship started to feel like the beginning of a confession, one I wanted to say out loud.</p>
+      <p lang="id">Kami mengobrol. Kenangan lama muncul kembali, jenis kenangan yang terasa lebih manis karena jarak daripada yang sebenarnya terjadi saat itu. Dan di suatu titik dalam percakapan itu, ada perasaan yang bergeser di dalam diriku — persahabatan sunyi masa SD mulai terasa seperti awal dari sebuah pengakuan, yang ingin kuucapkan keras-keras.</p>
+      <p lang="en">So I did something objectively ridiculous, and completely sincere: I wrote her a poem.</p>
+      <p lang="id">Jadi aku melakukan sesuatu yang objektif konyol, dan sepenuhnya tulus: aku menulis puisi untuknya.</p>
+      <p lang="en">It wasn't good. It was the kind of poem that starts with the oldest line in the world — roses are red, violets are blue — except I twisted it, because I wanted it to be mine. I replaced the flowers with minerals instead — gold, iron, something heavier and built to last. I don't remember the exact lines anymore, but I remember the feeling behind them — I was trying to say <em>you are rare, and I am something that doesn't bend easily, and I have been carrying this for longer than you know.</em></p>
+      <p lang="id">Puisinya tidak bagus. Jenis puisi yang dimulai dengan baris paling klise di dunia — bagai bunga mawar merah, violet biru — hanya saja kuubah, karena aku ingin itu menjadi milikku sendiri. Kuganti bunga-bunga itu dengan mineral — emas, besi, sesuatu yang lebih berat dan dibuat untuk bertahan lama. Aku tak lagi ingat baris-baris persisnya, tapi aku ingat perasaan di baliknya — aku mencoba mengatakan <em>kau berharga, dan aku adalah sesuatu yang tak mudah dibengkokkan, dan aku telah memikul ini lebih lama dari yang kau tahu.</em></p>
+      <p lang="en">I sent it.</p>
+      <p lang="id">Aku mengirimkannya.</p>
 
-      <h2>III. The Reply</h2>
-      <p>She wrote back quickly. Kindly. Devastatingly.</p>
-      <blockquote>"Thank you for confessing, but we have already lost contact for a few years, so I think we should just be friends."</blockquote>
-      <p>That was it. No cruelty in it. No mockery. If anything, it was the gentlest possible way to say no — and somehow that made it worse, the way a wound cut by a careful hand still bleeds. There was nothing to be angry at. She hadn't done anything wrong. I couldn't even be bitter about it. I had handed her my heart wrapped in a silly poem about gold and iron, and she had handed it back with more grace than I gave myself credit for receiving — the way you might return something beautiful that was never yours to keep, careful not to let it break on the way.</p>
-      <p>I didn't reply with anything dramatic. I think I just typed back a few quiet words, small enough to let both of us pretend the moment wasn't as big as it felt. Then I put my phone down and became, for the first time, truly and privately alone with it.</p>
+      <h2 lang="en">III. The Reply</h2>
+      <h2 lang="id">III. Balasannya</h2>
+      <p lang="en">She wrote back quickly. Kindly. Devastatingly.</p>
+      <p lang="id">Dia membalas dengan cepat. Dengan lembut. Dan menghancurkan.</p>
+      <blockquote lang="en">"Thank you for confessing, but we have already lost contact for a few years, so I think we should just be friends."</blockquote>
+      <blockquote lang="id">"Terima kasih sudah jujur, tapi kita kan sudah lama putus kontak, jadi menurutku sebaiknya kita berteman saja."</blockquote>
+      <p lang="en">That was it. No cruelty in it. No mockery. If anything, it was the gentlest possible way to say no — and somehow that made it worse, the way a wound cut by a careful hand still bleeds. There was nothing to be angry at. She hadn't done anything wrong. I couldn't even be bitter about it. I had handed her my heart wrapped in a silly poem about gold and iron, and she had handed it back with more grace than I gave myself credit for receiving — the way you might return something beautiful that was never yours to keep, careful not to let it break on the way.</p>
+      <p lang="id">Hanya itu. Tak ada kekejaman di dalamnya. Tak ada ejekan. Kalau boleh dibilang, itu adalah cara paling lembut untuk menolak — dan entah bagaimana itu justru membuatnya lebih berat, seperti luka yang disayat tangan yang hati-hati tetap saja berdarah. Tak ada yang bisa dimarahi. Dia tidak melakukan kesalahan apa pun. Aku bahkan tak bisa merasa pahit soal itu. Aku telah menyerahkan hatiku yang terbungkus puisi konyol tentang emas dan besi, dan dia mengembalikannya dengan keanggunan yang lebih besar dari yang kukira sanggup kuterima — seperti caramu mengembalikan sesuatu yang indah namun bukan untuk kaumiliki, dengan hati-hati agar tak pecah di tengah jalan.</p>
+      <p lang="en">I didn't reply with anything dramatic. I think I just typed back a few quiet words, small enough to let both of us pretend the moment wasn't as big as it felt. Then I put my phone down and became, for the first time, truly and privately alone with it.</p>
+      <p lang="id">Aku tidak membalas dengan sesuatu yang dramatis. Kurasa aku hanya mengetik beberapa kata singkat, cukup kecil agar kami berdua bisa pura-pura momen itu tidak sebesar yang terasa. Lalu aku meletakkan ponselku, dan untuk pertama kalinya, benar-benar sendirian dengan semua itu.</p>
 
-      <h2>IV. What I Didn't Tell Anyone</h2>
-      <p>Here's what nobody around me knew: I was fine. I went to school. I talked to my friends. I laughed when things were funny. Nothing on the surface cracked.</p>
-      <p>But underneath, for about a month, I was drowning quietly. Nobody noticed — not my closest friends, not my family. No one asked, because there was nothing on the outside to ask about. I decided, somewhere without consciously deciding, that this was mine to carry alone. It would take years before I told anyone at all — not until senior high school, when it had long since stopped being a wound and had become just a story I could finally say out loud.</p>
-      <p>So I carried it at midnight.</p>
+      <h2 lang="en">IV. What I Didn't Tell Anyone</h2>
+      <h2 lang="id">IV. Yang Tak Kuceritakan pada Siapa Pun</h2>
+      <p lang="en">Here's what nobody around me knew: I was fine. I went to school. I talked to my friends. I laughed when things were funny. Nothing on the surface cracked.</p>
+      <p lang="id">Inilah yang tak diketahui siapa pun di sekitarku: aku baik-baik saja. Aku tetap sekolah. Aku tetap mengobrol dengan teman-temanku. Aku tertawa saat ada yang lucu. Tak ada yang retak di permukaan.</p>
+      <p lang="en">But underneath, for about a month, I was drowning quietly. Nobody noticed — not my closest friends, not my family. No one asked, because there was nothing on the outside to ask about. I decided, somewhere without consciously deciding, that this was mine to carry alone. It would take years before I told anyone at all — not until senior high school, when it had long since stopped being a wound and had become just a story I could finally say out loud.</p>
+      <p lang="id">Tapi di baliknya, selama sekitar sebulan, aku tenggelam diam-diam. Tak ada yang sadar — bukan teman terdekatku, bukan keluargaku. Tak ada yang bertanya, karena memang tak ada yang terlihat untuk ditanyakan. Aku memutuskan, entah bagaimana tanpa benar-benar memutuskan, bahwa ini adalah milikku untuk kupikul sendiri. Butuh bertahun-tahun sebelum aku menceritakannya pada siapa pun — baru di SMA, saat semua itu sudah lama berhenti menjadi luka dan berubah menjadi sekadar cerita yang akhirnya bisa kuucapkan.</p>
+      <p lang="en">So I carried it at midnight.</p>
+      <p lang="id">Jadi aku memikulnya tengah malam.</p>
 
-      <h2>V. The Ritual</h2>
-      <p>My room became the only place the truth was allowed to exist. It wasn't much to look at — a hideous little space whose only window faced a blank wall, some dead air shaft in the middle of the house that let in no view, just a thin wash of light from outside at night, barely enough to see by. Alone, door closed, the rest of the house asleep, I started doing something I'd never really done before: I worked out.</p>
-      <p>Push-ups. Sit-ups. Skipping rope, over and over, the rhythm of it filling the silence where a reply from her might have been. Shadow boxing at things that weren't there — throwing punches at a version of the night that couldn't hit back, could only absorb whatever I threw at it and ask for more.</p>
-      <p>It wasn't about getting stronger. Not at first. It was about doing something with a feeling that had nowhere else to go, a grief with no funeral, no name I was willing to give it. I wasn't chasing a body. I was chasing exhaustion — the kind that lets you fall asleep instead of think, the way a river wears a stone smooth not through violence but through repetition, night after night, until something that used to cut you stops cutting.</p>
-      <p>But bodies remember what you do to them at midnight, even if your heart doesn't notice. Months passed the way seasons do, imperceptibly and then all at once. What started as skinny arms and a frustrated kid throwing punches at nothing slowly became something else. Strength that hadn't been there before. Muscle where there used to just be bone and restlessness. I was rebuilding myself in the dark, brick by invisible brick, and I didn't even realize that's what it was until other people started to notice the difference in daylight — as if I had been quarried out of my own sadness.</p>
+      <h2 lang="en">V. The Ritual</h2>
+      <h2 lang="id">V. Ritual Itu</h2>
+      <p lang="en">My room became the only place the truth was allowed to exist. It wasn't much to look at — a hideous little space whose only window faced a blank wall, some dead air shaft in the middle of the house that let in no view, just a thin wash of light from outside at night, barely enough to see by. Alone, door closed, the rest of the house asleep, I started doing something I'd never really done before: I worked out.</p>
+      <p lang="id">Kamarku menjadi satu-satunya tempat di mana kebenaran diizinkan untuk ada. Bukan ruangan yang istimewa — ruang kecil yang jelek, satu-satunya jendelanya menghadap tembok kosong, semacam lubang udara mati di tengah rumah yang tak memberi pemandangan apa pun, hanya cahaya tipis dari luar di malam hari, nyaris cukup untuk melihat. Sendirian, pintu tertutup, seisi rumah tertidur, aku mulai melakukan sesuatu yang belum pernah benar-benar kulakukan sebelumnya: aku berolahraga.</p>
+      <p lang="en">Push-ups. Sit-ups. Skipping rope, over and over, the rhythm of it filling the silence where a reply from her might have been. Shadow boxing at things that weren't there — throwing punches at a version of the night that couldn't hit back, could only absorb whatever I threw at it and ask for more.</p>
+      <p lang="id">Push-up. Sit-up. Lompat tali, berulang-ulang, iramanya mengisi kesunyian yang semestinya ditempati balasan darinya. Shadow boxing pada hal-hal yang tak ada — melayangkan pukulan ke versi malam yang tak bisa membalas, hanya bisa menyerap apa pun yang kulemparkan dan meminta lebih.</p>
+      <p lang="en">It wasn't about getting stronger. Not at first. It was about doing something with a feeling that had nowhere else to go, a grief with no funeral, no name I was willing to give it. I wasn't chasing a body. I was chasing exhaustion — the kind that lets you fall asleep instead of think, the way a river wears a stone smooth not through violence but through repetition, night after night, until something that used to cut you stops cutting.</p>
+      <p lang="id">Ini bukan soal menjadi lebih kuat. Tidak pada awalnya. Ini soal melakukan sesuatu dengan perasaan yang tak punya tempat lain untuk pergi, duka tanpa pemakaman, tanpa nama yang sudi kuberikan. Aku bukan mengejar bentuk tubuh. Aku mengejar kelelahan — jenis yang membuatmu bisa tertidur alih-alih berpikir, cara sungai mengikis batu hingga halus bukan lewat kekerasan tapi lewat pengulangan, malam demi malam, sampai sesuatu yang dulu melukaimu berhenti melukai.</p>
+      <p lang="en">But bodies remember what you do to them at midnight, even if your heart doesn't notice. Months passed the way seasons do, imperceptibly and then all at once. What started as skinny arms and a frustrated kid throwing punches at nothing slowly became something else. Strength that hadn't been there before. Muscle where there used to just be bone and restlessness. I was rebuilding myself in the dark, brick by invisible brick, and I didn't even realize that's what it was until other people started to notice the difference in daylight — as if I had been quarried out of my own sadness.</p>
+      <p lang="id">Tapi tubuh mengingat apa yang kaulakukan padanya di tengah malam, bahkan jika hatimu tidak menyadarinya. Bulan-bulan berlalu seperti musim berganti, nyaris tak terasa lalu tiba-tiba semuanya berubah. Yang dimulai dari lengan kurus dan anak yang frustrasi melayangkan pukulan pada kehampaan perlahan berubah menjadi sesuatu yang lain. Kekuatan yang dulu tak ada. Otot di tempat yang dulu hanya tulang dan kegelisahan. Aku membangun ulang diriku dalam gelap, bata demi bata yang tak terlihat, dan aku bahkan tak sadar itulah yang sedang terjadi sampai orang lain mulai memperhatikan perbedaannya di siang hari — seolah aku telah dipahat keluar dari kesedihanku sendiri.</p>
 
-      <h2>VI. The Slow Return</h2>
-      <p>About three months after the rejection, Nicole and I started talking again — carefully, at first, the way you test ice before trusting it to hold your weight. It never went back to exactly what it was. How could it? But it became something real in its own way: an honest friendship, built on the fact that I had asked for more and she had told me the truth instead of stringing me along.</p>
-      <p>I kept working out. Grade nine turned into grade ten, grade ten into eleven. The ritual outlived the pain that started it — push-ups and shadow boxing became less about her and more about who I was becoming. But I never really stopped because of that first wound. Even as the ache faded, the discipline stayed, like a habit that had learned to survive without its original reason.</p>
+      <h2 lang="en">VI. The Slow Return</h2>
+      <h2 lang="id">VI. Kembali Secara Perlahan</h2>
+      <p lang="en">About three months after the rejection, Nicole and I started talking again — carefully, at first, the way you test ice before trusting it to hold your weight. It never went back to exactly what it was. How could it? But it became something real in its own way: an honest friendship, built on the fact that I had asked for more and she had told me the truth instead of stringing me along.</p>
+      <p lang="id">Sekitar tiga bulan setelah penolakan itu, Nicole dan aku mulai mengobrol lagi — hati-hati, pada awalnya, seperti caramu menguji lapisan es sebelum mempercayainya menahan beratmu. Itu tak pernah kembali persis seperti sebelumnya. Bagaimana mungkin? Tapi ia menjadi sesuatu yang nyata dengan caranya sendiri: persahabatan yang jujur, dibangun dari kenyataan bahwa aku pernah meminta lebih dan dia memilih mengatakan yang sebenarnya alih-alih mengulur-ulur harapanku.</p>
+      <p lang="en">I kept working out. Grade nine turned into grade ten, grade ten into eleven. The ritual outlived the pain that started it — push-ups and shadow boxing became less about her and more about who I was becoming. But I never really stopped because of that first wound. Even as the ache faded, the discipline stayed, like a habit that had learned to survive without its original reason.</p>
+      <p lang="id">Aku terus berolahraga. Kelas sembilan berganti kelas sepuluh, kelas sepuluh berganti sebelas. Ritual itu bertahan lebih lama dari rasa sakit yang memulainya — push-up dan shadow boxing makin lama makin sedikit soal dirinya dan makin banyak soal menjadi siapa aku nantinya. Tapi aku tak pernah benar-benar berhenti karena luka pertama itu. Bahkan saat sakitnya memudar, disiplin itu tetap tinggal, seperti kebiasaan yang belajar bertahan hidup tanpa alasan awalnya.</p>
 
-      <h2>VII. The Angel</h2>
-      <p>Somewhere around grade ten, something happened that still confuses me when I try to make sense of Nicole as a character in my own life: she started helping me. Actively. She guided me toward someone else — someone the relationship with whom would go on to turn out well — even though I never worked up the courage to confess to that person either, some old trauma quietly holding my tongue.</p>
-      <p>That's the part of Nicole I still don't fully know how to describe. She was the one who rejected me. And she was also the one who, without needing to, chose to help me find something good afterward. She never owed me that. She did it anyway.</p>
-      <p>She wasn't a villain in this story. She wasn't a prize I lost, either. She was something stranger and more human than both of those things — a person who told me the truth when it would've been easier to let me hope, and who then spent the following years quietly rooting for me to be happy with someone else.</p>
-      <p><em>She blessed me. And she cursed my feelings.</em> Both of those things are true, and neither one cancels the other out.</p>
+      <h2 lang="en">VII. The Angel</h2>
+      <h2 lang="id">VII. Sang Malaikat</h2>
+      <p lang="en">Somewhere around grade ten, something happened that still confuses me when I try to make sense of Nicole as a character in my own life: she started helping me. Actively. She guided me toward someone else — someone the relationship with whom would go on to turn out well — even though I never worked up the courage to confess to that person either, some old trauma quietly holding my tongue.</p>
+      <p lang="id">Sekitar kelas sepuluh, ada sesuatu yang terjadi dan masih membingungkanku ketika aku mencoba memahami sosok Nicole dalam hidupku: dia mulai membantuku. Secara aktif. Dia mengarahkanku pada seseorang yang lain — seseorang yang hubungannya nanti akan berakhir cukup baik — meski aku tak pernah cukup berani mengaku pada orang itu juga, trauma lama diam-diam mengunci lidahku.</p>
+      <p lang="en">That's the part of Nicole I still don't fully know how to describe. She was the one who rejected me. And she was also the one who, without needing to, chose to help me find something good afterward. She never owed me that. She did it anyway.</p>
+      <p lang="id">Itulah bagian dari Nicole yang masih sulit kudeskripsikan sepenuhnya. Dialah yang menolakku. Dan dialah juga yang, tanpa perlu melakukannya, memilih membantuku menemukan sesuatu yang baik setelahnya. Dia tak pernah berutang itu padaku. Tapi dia tetap melakukannya.</p>
+      <p lang="en">She wasn't a villain in this story. She wasn't a prize I lost, either. She was something stranger and more human than both of those things — a person who told me the truth when it would've been easier to let me hope, and who then spent the following years quietly rooting for me to be happy with someone else.</p>
+      <p lang="id">Dia bukan tokoh jahat dalam kisah ini. Dia juga bukan hadiah yang kukalahkan. Dia adalah sesuatu yang lebih aneh dan lebih manusiawi dari keduanya — seseorang yang memilih berkata jujur saat lebih mudah baginya membiarkanku berharap, dan yang kemudian menghabiskan tahun-tahun berikutnya diam-diam mendukungku untuk bahagia bersama orang lain.</p>
+      <p lang="en"><em>She blessed me. And she cursed my feelings.</em> Both of those things are true, and neither one cancels the other out.</p>
+      <p lang="id"><em>Dia memberkatiku. Dan dia mengutuk perasaanku.</em> Keduanya sama-sama benar, dan tak satu pun meniadakan yang lain.</p>
 
-      <h2>VIII. What Was Left When the Pain Faded</h2>
-      <p>By grade eleven, the nightly ritual started to fade — not because the pain came roaring back to be defeated once and for all, but because it simply healed, the way most real wounds do: slowly, unevenly, without a single dramatic final scene.</p>
-      <p>And somewhere in that healing, someone new started to matter.</p>
-      <p>But that story — the one Nicole helped set in motion without either of us fully realizing it — belongs to the next chapter.</p>
-      <p>What Nicole left behind wasn't heartbreak. It was a body that could carry more than it used to, a friendship that survived its own worst moment, and a strange, permanent gratitude for a girl who said no in the kindest way a no has ever been said — the way certain doors, closed gently, teach you more about love than the ones left open ever could. She spent years afterward making sure that no wasn't the end of the story, only the sentence that taught me how to keep writing — the beginning of a harder, better one.</p>
+      <h2 lang="en">VIII. What Was Left When the Pain Faded</h2>
+      <h2 lang="id">VIII. Yang Tersisa Saat Sakit Itu Memudar</h2>
+      <p lang="en">By grade eleven, the nightly ritual started to fade — not because the pain came roaring back to be defeated once and for all, but because it simply healed, the way most real wounds do: slowly, unevenly, without a single dramatic final scene.</p>
+      <p lang="id">Menjelang kelas sebelas, ritual malam itu mulai memudar — bukan karena rasa sakitnya kembali menggebu untuk dikalahkan sekali untuk selamanya, melainkan karena ia memang sembuh dengan sendirinya, seperti kebanyakan luka sungguhan: perlahan, tidak merata, tanpa satu adegan akhir yang dramatis.</p>
+      <p lang="en">And somewhere in that healing, someone new started to matter.</p>
+      <p lang="id">Dan di suatu titik dalam penyembuhan itu, seseorang yang baru mulai berarti.</p>
+      <p lang="en">But that story — the one Nicole helped set in motion without either of us fully realizing it — belongs to the next chapter.</p>
+      <p lang="id">Tapi kisah itu — yang Nicole bantu mulai tanpa kami berdua benar-benar menyadarinya — adalah milik bab berikutnya.</p>
+      <p lang="en">What Nicole left behind wasn't heartbreak. It was a body that could carry more than it used to, a friendship that survived its own worst moment, and a strange, permanent gratitude for a girl who said no in the kindest way a no has ever been said — the way certain doors, closed gently, teach you more about love than the ones left open ever could. She spent years afterward making sure that no wasn't the end of the story, only the sentence that taught me how to keep writing — the beginning of a harder, better one.</p>
+      <p lang="id">Yang ditinggalkan Nicole bukanlah patah hati. Melainkan tubuh yang mampu memikul lebih dari sebelumnya, persahabatan yang bertahan melewati momen terburuknya sendiri, dan rasa syukur yang aneh namun abadi untuk seorang gadis yang berkata tidak dengan cara paling lembut yang pernah ada — seperti pintu-pintu tertentu, yang ditutup dengan lembut, mengajarkanmu lebih banyak soal cinta dibanding pintu yang dibiarkan terbuka. Dia menghabiskan tahun-tahun setelahnya memastikan bahwa penolakan itu bukanlah akhir dari cerita, melainkan hanya kalimat yang mengajariku cara terus menulis — awal dari sesuatu yang lebih sulit, dan lebih baik.</p>
 
-      <p class="chapter-end">End of Chapter One.</p>
+      <p class="chapter-end"><span lang="en">End of Chapter One.</span><span lang="id">Akhir Bab Satu.</span></p>
     </article>
 
+    <!-- ===================== CHAPTER TWO ===================== -->
     <div class="hero" id="ch2" style="margin-top: 80px;">
-      <p class="label">Chapter Two</p>
-      <h1>The Hint I Never Caught</h1>
-      <p class="sub">Some chapters are about what happened. This one is about what almost did — and never got the chance to, because I wasn't looking.</p>
+      <p class="label"><span lang="en">Chapter Two</span><span lang="id">Bab Dua</span></p>
+      <h1><span lang="en">The Hint I Never Caught</span><span lang="id">Petunjuk yang Tak Pernah Kutangkap</span></h1>
+      <p class="sub">
+        <span lang="en">Some chapters are about what happened. This one is about what almost did — and never got the chance to, because I wasn't looking.</span>
+        <span lang="id">Sebagian bab bercerita tentang apa yang terjadi. Bab ini bercerita tentang apa yang hampir terjadi — dan tak pernah sempat, karena aku tak sedang memperhatikan.</span>
+      </p>
     </div>
 
     <article>
-      <h2>I. The Friend Who Liked to Play</h2>
-      <p>Cici Aulia had been around since grade four, the same stretch of years that gave me Nicole, except Cici was a different kind of presence entirely — loud where Nicole was quiet, mischievous where Nicole was steady. She was the kind of friend who liked to tease, to push buttons just to watch your reaction, a little naughty in the harmless, grade-school way kids are naughty when they haven't learned subtlety yet. I liked her the way you like a friend who makes boring days less boring. Nothing more than that, as far as I knew.</p>
+      <h2 lang="en">I. The Friend Who Liked to Play</h2>
+      <h2 lang="id">I. Teman yang Suka Bercanda</h2>
+      <p lang="en">Cici Aulia had been around since grade four, the same stretch of years that gave me Nicole, except Cici was a different kind of presence entirely — loud where Nicole was quiet, mischievous where Nicole was steady. She was the kind of friend who liked to tease, to push buttons just to watch your reaction, a little naughty in the harmless, grade-school way kids are naughty when they haven't learned subtlety yet. I liked her the way you like a friend who makes boring days less boring. Nothing more than that, as far as I knew.</p>
+      <p lang="id">Cici Aulia sudah ada sejak kelas empat, rentang tahun yang sama yang memberiku Nicole, hanya saja kehadiran Cici benar-benar berbeda jenisnya — ribut di saat Nicole tenang, jahil di saat Nicole stabil. Dia tipe teman yang suka menggoda, memancing reaksi hanya untuk melihatnya, sedikit nakal dengan cara khas anak SD yang belum mengenal kehalusan. Aku menyukainya sebagaimana kau menyukai teman yang membuat hari membosankan jadi tak terlalu membosankan. Tak lebih dari itu, setahuku.</p>
 
-      <h2>II. What I Didn't See</h2>
-      <p>Grade five. Somewhere in there, without my noticing a single sign of it, Cici developed a crush on me.</p>
-      <p>I want to say I was oblivious in some charming, forgivable way — but the truth is I was just young and self-absorbed in the specific way boys that age are, too busy existing inside my own head to notice when someone was quietly existing around the edges of it, hoping to be noticed. Whatever signs there were, I missed every one of them.</p>
-      <p>It took someone else to tell me. A break-time, school, nothing special about the day — and then my friend Kevin said it out of nowhere, the way guy friends do, like he was handing over a piece of gossip rather than a piece of information that might have mattered. <em>She likes you. Did you not know?</em></p>
-      <p>I didn't.</p>
+      <h2 lang="en">II. What I Didn't See</h2>
+      <h2 lang="id">II. Yang Tak Kulihat</h2>
+      <p lang="en">Grade five. Somewhere in there, without my noticing a single sign of it, Cici developed a crush on me.</p>
+      <p lang="id">Kelas lima. Entah kapan persisnya, tanpa aku menyadari satu pun tandanya, Cici mulai menyukaiku.</p>
+      <p lang="en">I want to say I was oblivious in some charming, forgivable way — but the truth is I was just young and self-absorbed in the specific way boys that age are, too busy existing inside my own head to notice when someone was quietly existing around the edges of it, hoping to be noticed. Whatever signs there were, I missed every one of them.</p>
+      <p lang="id">Aku ingin bilang aku tidak peka dengan cara yang menggemaskan dan bisa dimaafkan — tapi sebenarnya aku hanya masih kecil dan terlalu sibuk dengan duniaku sendiri, cara khas anak laki-laki seusia itu, terlalu asyik hidup di dalam kepalaku sendiri untuk menyadari ada seseorang yang diam-diam berada di pinggirannya, berharap diperhatikan. Tanda apa pun yang ada, aku melewatkan semuanya.</p>
+      <p lang="en">It took someone else to tell me. A break-time, school, nothing special about the day — and then my friend Kevin said it out of nowhere, the way guy friends do, like he was handing over a piece of gossip rather than a piece of information that might have mattered. <em>She likes you. Did you not know?</em></p>
+      <p lang="id">Butuh orang lain untuk memberitahuku. Saat istirahat, di sekolah, hari yang biasa-biasa saja — lalu temanku Kevin tiba-tiba bilang begitu saja, cara khas sesama teman cowok, seolah sedang membagikan gosip biasa alih-alih informasi yang sebenarnya penting. <em>Dia suka kamu. Kamu nggak tahu?</em></p>
+      <p lang="en">I didn't.</p>
+      <p lang="id">Aku memang tidak tahu.</p>
 
-      <h2>III. Nothing Happened</h2>
-      <p>And that was it — nothing happened. No confession from her, no confession from me. I don't know if the moment simply passed because neither of us reached for it, or if by the time I knew, whatever she'd felt had already quietly folded itself away. We stayed what we'd always been: classmates, friends, nothing declared. Life moved on the way it does for kids who don't yet understand that some windows only open once.</p>
+      <h2 lang="en">III. Nothing Happened</h2>
+      <h2 lang="id">III. Tak Ada yang Terjadi</h2>
+      <p lang="en">And that was it — nothing happened. No confession from her, no confession from me. I don't know if the moment simply passed because neither of us reached for it, or if by the time I knew, whatever she'd felt had already quietly folded itself away. We stayed what we'd always been: classmates, friends, nothing declared. Life moved on the way it does for kids who don't yet understand that some windows only open once.</p>
+      <p lang="id">Dan hanya itu — tak ada yang terjadi. Tak ada pengakuan darinya, tak ada pengakuan dariku. Aku tak tahu apakah momen itu begitu saja berlalu karena kami berdua tak ada yang meraihnya, atau apakah saat aku akhirnya tahu, apa pun yang dia rasakan sudah diam-diam terlipat dan menghilang. Kami tetap seperti biasanya: teman sekelas, teman biasa, tanpa status apa pun. Hidup terus berjalan, seperti biasanya bagi anak-anak yang belum paham bahwa ada jendela tertentu yang hanya terbuka sekali.</p>
 
-      <h2>IV. Years Later, A Scroll</h2>
-      <p>Senior high school. I was bored one evening, doing the thing everyone does when there's nothing else to do — scrolling back through old names on Instagram, half out of nostalgia, half out of nothing at all. I found her account.</p>
-      <p>Cici had changed. The naughty, playful grade-schooler I remembered had grown into someone who did modeling and cosplay, photos styled and confident in a way that felt like looking at a stranger who happened to share a childhood with me. And there, somewhere in the photos, was the detail that actually stopped my scrolling: she had a boyfriend.</p>
+      <h2 lang="en">IV. Years Later, A Scroll</h2>
+      <h2 lang="id">IV. Bertahun-tahun Kemudian, Sebuah Gulir Layar</h2>
+      <p lang="en">Senior high school. I was bored one evening, doing the thing everyone does when there's nothing else to do — scrolling back through old names on Instagram, half out of nostalgia, half out of nothing at all. I found her account.</p>
+      <p lang="id">SMA. Suatu malam aku bosan, melakukan hal yang semua orang lakukan saat tak ada kerjaan lain — menggulir ke belakang mencari nama-nama lama di Instagram, setengah karena nostalgia, setengah karena memang tak ada alasan jelas. Aku menemukan akunnya.</p>
+      <p lang="en">Cici had changed. The naughty, playful grade-schooler I remembered had grown into someone who did modeling and cosplay, photos styled and confident in a way that felt like looking at a stranger who happened to share a childhood with me. And there, somewhere in the photos, was the detail that actually stopped my scrolling: she had a boyfriend.</p>
+      <p lang="id">Cici sudah berubah. Anak SD yang nakal dan suka bercanda yang kuingat kini tumbuh menjadi seseorang yang terjun ke dunia modeling dan cosplay, foto-fotonya tertata rapi dan percaya diri, sampai rasanya seperti menatap orang asing yang kebetulan pernah berbagi masa kecil denganku. Dan di sana, di antara foto-foto itu, ada satu detail yang benar-benar menghentikan gulirannya: dia sudah punya pacar.</p>
 
-      <h2>V. The Regret That Didn't Stay</h2>
-      <p>Something in me ached at that — not heartbreak, nothing that dramatic, but a quieter kind of pain, the specific sting of realizing a door you never knew was open had already closed somewhere behind you. For a while I sat with it. <em>What if I'd noticed back then? What if Kevin's out-of-nowhere comment had landed on someone less oblivious?</em></p>
-      <p>But the ache didn't stay long, and I think that's the real shape of this chapter — not loss, but a small, honest lesson instead of a haunting. I had a present worth chasing: another girl, a different path, a version of myself still being built in rooms at midnight. I let Cici's chapter close the way it had always been quietly closing, one missed hint at a time, and I moved on.</p>
-      <p>Not every story needs an ending where you get the girl. Some stories just need you to notice the next time — and I think that's exactly what this one gave me.</p>
+      <h2 lang="en">V. The Regret That Didn't Stay</h2>
+      <h2 lang="id">V. Penyesalan yang Tak Bertahan Lama</h2>
+      <p lang="en">Something in me ached at that — not heartbreak, nothing that dramatic, but a quieter kind of pain, the specific sting of realizing a door you never knew was open had already closed somewhere behind you. For a while I sat with it. <em>What if I'd noticed back then? What if Kevin's out-of-nowhere comment had landed on someone less oblivious?</em></p>
+      <p lang="id">Ada sesuatu dalam diriku yang terasa sakit saat itu — bukan patah hati, tak sedramatis itu, melainkan rasa sakit yang lebih tenang, perih spesifik saat menyadari sebuah pintu yang bahkan tak kau tahu pernah terbuka ternyata sudah tertutup di belakangmu. Untuk sesaat aku duduk dengan perasaan itu. <em>Bagaimana kalau dulu aku menyadarinya? Bagaimana kalau ucapan Kevin yang tiba-tiba itu mendarat pada orang yang tidak sebegitu tidak peka?</em></p>
+      <p lang="en">But the ache didn't stay long, and I think that's the real shape of this chapter — not loss, but a small, honest lesson instead of a haunting. I had a present worth chasing: another girl, a different path, a version of myself still being built in rooms at midnight. I let Cici's chapter close the way it had always been quietly closing, one missed hint at a time, and I moved on.</p>
+      <p lang="id">Tapi rasa sakit itu tidak bertahan lama, dan kurasa itulah bentuk sebenarnya dari bab ini — bukan kehilangan, melainkan pelajaran kecil yang jujur, bukan hantu yang menghantui. Aku punya masa kini yang layak dikejar: gadis lain, jalan yang berbeda, versi diriku yang masih dibangun di kamar-kamar tengah malam. Kubiarkan bab Cici menutup dirinya sendiri sebagaimana ia selalu diam-diam menutup, satu petunjuk terlewat demi satu petunjuk terlewat, dan aku pun melangkah maju.</p>
+      <p lang="en">Not every story needs an ending where you get the girl. Some stories just need you to notice the next time — and I think that's exactly what this one gave me.</p>
+      <p lang="id">Tidak setiap cerita butuh akhir di mana kau mendapatkan gadisnya. Sebagian cerita hanya perlu membuatmu lebih peka di kesempatan berikutnya — dan kurasa itulah persisnya yang diberikan bab ini padaku.</p>
 
-      <p class="chapter-end">End of Chapter Two.</p>
+      <p class="chapter-end"><span lang="en">End of Chapter Two.</span><span lang="id">Akhir Bab Dua.</span></p>
     </article>
 
+    <!-- ===================== CHAPTER THREE ===================== -->
     <div class="hero" id="ch3" style="margin-top: 80px;">
-      <p class="label">Chapter Three</p>
-      <h1>The Question I Already Knew the Answer To</h1>
-      <p class="sub">The first time anyone ever confessed to me wasn't a declaration — it was a question, and I answered it before I understood what I was agreeing to.</p>
+      <p class="label"><span lang="en">Chapter Three</span><span lang="id">Bab Tiga</span></p>
+      <h1><span lang="en">The Question I Already Knew the Answer To</span><span lang="id">Pertanyaan yang Jawabannya Sudah Kutahu</span></h1>
+      <p class="sub">
+        <span lang="en">The first time anyone ever confessed to me wasn't a declaration — it was a question, and I answered it before I understood what I was agreeing to.</span>
+        <span lang="id">Pengakuan pertama yang pernah kuterima bukanlah sebuah pernyataan — melainkan sebuah pertanyaan, dan aku menjawabnya sebelum sadar apa yang baru saja kusetujui.</span>
+      </p>
     </div>
 
     <article>
-      <p>Grade eight found me in a strange window — not fully healed from anything, not fully looking for anything either, just a kid getting by, not particularly attractive by most measures I could name. Which made what happened next even stranger. I don't remember how it started between Evelyn and me. I only remember that somewhere along the way, without my noticing the shift, she liked me anyway.</p>
-      <p>She never said it outright. We were chatting, the ordinary kind of nothing-conversation two people have before anything is at stake, when she asked if I'd ever liked a girl in our class. I knew the shape of that question the moment it landed — knew exactly what kind of door she was quietly holding open — so I said her name back to her, on instinct, the way you answer a question you already understand is really a different question in disguise.</p>
-      <p>That was the confession. Not a declaration, not three words said out loud — just a question I answered correctly, and in answering it, pulled her true want out into the open. It was the first time a girl had ever confessed to me, if you could call it that, and I remember being confused more than anything. Flattered, maybe. But confused.</p>
+      <p lang="en">Grade eight found me in a strange window — not fully healed from anything, not fully looking for anything either, just a kid getting by, not particularly attractive by most measures I could name. Which made what happened next even stranger. I don't remember how it started between Evelyn and me. I only remember that somewhere along the way, without my noticing the shift, she liked me anyway.</p>
+      <p lang="id">Kelas delapan menemukanku dalam jendela waktu yang aneh — belum sepenuhnya sembuh dari apa pun, tapi juga tidak benar-benar sedang mencari apa pun, hanya anak yang menjalani hari, tidak terlalu menarik menurut sebagian besar ukuran yang bisa kusebutkan. Yang membuat apa yang terjadi berikutnya makin aneh. Aku tak ingat bagaimana semuanya dimulai antara aku dan Evelyn. Aku hanya ingat bahwa di suatu titik, tanpa aku menyadari pergeserannya, dia menyukaiku juga.</p>
+      <p lang="en">She never said it outright. We were chatting, the ordinary kind of nothing-conversation two people have before anything is at stake, when she asked if I'd ever liked a girl in our class. I knew the shape of that question the moment it landed — knew exactly what kind of door she was quietly holding open — so I said her name back to her, on instinct, the way you answer a question you already understand is really a different question in disguise.</p>
+      <p lang="id">Dia tak pernah mengatakannya secara terang-terangan. Kami sedang mengobrol, obrolan biasa tanpa arti yang dilakukan dua orang sebelum ada sesuatu yang dipertaruhkan, ketika dia bertanya apakah aku pernah menyukai seorang gadis di kelas kami. Aku langsung tahu bentuk pertanyaan itu begitu ia mendarat — tahu persis pintu macam apa yang sedang diam-diam dia buka — jadi aku menyebut namanya kembali padanya, secara naluri, cara kau menjawab pertanyaan yang sebenarnya kau tahu adalah pertanyaan lain yang menyamar.</p>
+      <p lang="en">That was the confession. Not a declaration, not three words said out loud — just a question I answered correctly, and in answering it, pulled her true want out into the open. It was the first time a girl had ever confessed to me, if you could call it that, and I remember being confused more than anything. Flattered, maybe. But confused.</p>
+      <p lang="id">Itulah pengakuannya. Bukan sebuah pernyataan, bukan tiga kata yang diucapkan keras-keras — hanya sebuah pertanyaan yang kujawab dengan benar, dan dengan menjawabnya, aku menarik keinginan sesungguhnya keluar ke permukaan. Itu adalah kali pertama seorang gadis mengaku padaku, kalau bisa disebut begitu, dan aku ingat merasa bingung lebih dari apa pun. Mungkin tersanjung. Tapi bingung.</p>
 
       <hr class="divider">
 
-      <p>I told her the truth: I wasn't ready. The pain from before was still sitting somewhere under my skin, not healed enough to make room for someone new, and besides — I didn't know her. Not really. Liking someone and knowing someone are different things, and I only had the first one.</p>
-      <p>She didn't walk away from that. Instead she offered something else — what people my age back home call <em>HTS</em>, a no-status relationship. Not official, not a title, just two people quietly occupying the space where a relationship would be, without ever naming it one. I didn't agree with the idea, not really. But I went along with it anyway, the way you sometimes agree to things by simply not objecting hard enough.</p>
+      <p lang="en">I told her the truth: I wasn't ready. The pain from before was still sitting somewhere under my skin, not healed enough to make room for someone new, and besides — I didn't know her. Not really. Liking someone and knowing someone are different things, and I only had the first one.</p>
+      <p lang="id">Aku mengatakan yang sebenarnya padanya: aku belum siap. Rasa sakit dari masa lalu masih tersimpan di bawah kulitku, belum cukup sembuh untuk memberi ruang bagi orang baru, dan selain itu — aku tidak benar-benar mengenalnya. Menyukai seseorang dan mengenal seseorang adalah dua hal berbeda, dan aku baru punya yang pertama.</p>
+      <p lang="en">She didn't walk away from that. Instead she offered something else — what people my age back home call <em>HTS</em>, a no-status relationship. Not official, not a title, just two people quietly occupying the space where a relationship would be, without ever naming it one. I didn't agree with the idea, not really. But I went along with it anyway, the way you sometimes agree to things by simply not objecting hard enough.</p>
+      <p lang="id">Dia tidak langsung menjauh karena itu. Sebaliknya, dia menawarkan hal lain — yang anak-anak seusiaku di sini sebut <em>HTS</em>, hubungan tanpa status. Tidak resmi, tanpa label, hanya dua orang yang diam-diam menempati ruang tempat sebuah hubungan seharusnya berada, tanpa pernah benar-benar menamainya begitu. Aku sebenarnya tidak setuju dengan ide itu. Tapi aku tetap menjalaninya, cara kau kadang menyetujui sesuatu hanya dengan tidak cukup keras menolaknya.</p>
 
       <hr class="divider">
 
-      <p>So we existed like that for a while — close, attentive, trading the kind of small daily attention that relationships run on, without any of the relationship's actual shape. No title. No clarity. Just warmth with no address.</p>
-      <p>I don't know exactly when it started to exhaust me. One day I just noticed that I was tired — tired of a closeness that asked for everything a relationship asks for while promising none of what a relationship promises back. So I started pulling away. Slowly, without announcing it, the same way most of my retreats happen: not a single conversation that ended things, just less and less of me showing up, until there was barely anything left to fade.</p>
+      <p lang="en">So we existed like that for a while — close, attentive, trading the kind of small daily attention that relationships run on, without any of the relationship's actual shape. No title. No clarity. Just warmth with no address.</p>
+      <p lang="id">Jadi kami hidup seperti itu untuk sementara waktu — dekat, penuh perhatian, saling bertukar perhatian kecil harian yang biasanya menjadi bahan bakar sebuah hubungan, tanpa bentuk nyata dari hubungan itu sendiri. Tanpa label. Tanpa kejelasan. Hanya kehangatan tanpa alamat.</p>
+      <p lang="en">I don't know exactly when it started to exhaust me. One day I just noticed that I was tired — tired of a closeness that asked for everything a relationship asks for while promising none of what a relationship promises back. So I started pulling away. Slowly, without announcing it, the same way most of my retreats happen: not a single conversation that ended things, just less and less of me showing up, until there was barely anything left to fade.</p>
+      <p lang="id">Aku tak tahu persis kapan semua itu mulai melelahkanku. Suatu hari aku hanya menyadari bahwa aku lelah — lelah dengan kedekatan yang menuntut segala sesuatu yang dituntut sebuah hubungan tanpa menjanjikan balik apa pun yang biasanya dijanjikan sebuah hubungan. Jadi aku mulai menjauh. Perlahan, tanpa mengumumkannya, cara kebanyakan mundurku terjadi: bukan satu percakapan yang mengakhiri semuanya, hanya semakin sedikit diriku yang hadir, sampai nyaris tak ada lagi yang tersisa untuk memudar.</p>
 
       <hr class="divider">
 
-      <p>It drifted out gradually, the two of us thinning into something that used to be close, until Evelyn found someone else — a guy who, from everything I could tell, was worse than me in most of the ways that matter. Reckless. Not particularly sharp. Crude in the way he talked about girls.</p>
-      <p>That's when it clicked, the thing I hadn't let myself see while I was still inside it: Evelyn was never actually looking for someone to love. She was looking for the feeling of being someone's — the attention, the status of being attached to somebody, regardless of who that somebody turned out to be. I happened to be available first. He happened to be available after.</p>
-      <p>I don't carry much weight from this one. Not heartbreak, not even real regret — just a quiet, slightly uncomfortable clarity about what I'd actually been standing inside of, long after I'd already walked out of it.</p>
+      <p lang="en">It drifted out gradually, the two of us thinning into something that used to be close, until Evelyn found someone else — a guy who, from everything I could tell, was worse than me in most of the ways that matter. Reckless. Not particularly sharp. Crude in the way he talked about girls.</p>
+      <p lang="id">Semuanya memudar perlahan, kami berdua menipis menjadi bayangan dari sesuatu yang dulu pernah dekat, sampai Evelyn menemukan orang lain — seorang cowok yang, sejauh yang bisa kulihat, lebih buruk dariku di hampir semua hal yang penting. Sembrono. Tidak terlalu cerdas. Kasar dalam caranya membicarakan perempuan.</p>
+      <p lang="en">That's when it clicked, the thing I hadn't let myself see while I was still inside it: Evelyn was never actually looking for someone to love. She was looking for the feeling of being someone's — the attention, the status of being attached to somebody, regardless of who that somebody turned out to be. I happened to be available first. He happened to be available after.</p>
+      <p lang="id">Saat itulah semuanya terasa jelas, hal yang tak kubiarkan diriku lihat selama aku masih berada di dalamnya: Evelyn sebenarnya tidak pernah benar-benar mencari seseorang untuk dicintai. Dia mencari sensasi menjadi milik seseorang — perhatian, status terikat pada seseorang, siapa pun orang itu nantinya. Aku kebetulan tersedia lebih dulu. Dia kebetulan tersedia setelahnya.</p>
+      <p lang="en">I don't carry much weight from this one. Not heartbreak, not even real regret — just a quiet, slightly uncomfortable clarity about what I'd actually been standing inside of, long after I'd already walked out of it.</p>
+      <p lang="id">Aku tidak membawa banyak beban dari bab ini. Bukan patah hati, bahkan bukan penyesalan sungguhan — hanya sebuah kejelasan yang tenang dan sedikit tak nyaman tentang apa yang sebenarnya pernah kutempati, jauh setelah aku sudah melangkah keluar darinya.</p>
 
-      <p class="chapter-end">End of Chapter Three.</p>
+      <p class="chapter-end"><span lang="en">End of Chapter Three.</span><span lang="id">Akhir Bab Tiga.</span></p>
     </article>
 
+    <!-- ===================== CHAPTER FOUR ===================== -->
     <div class="hero" id="ch4" style="margin-top: 80px;">
-      <p class="label">Chapter Four</p>
-      <h1>The Hours I Hoped Would Never Come</h1>
-      <p class="sub">Some moments you spend your whole life hoping never to meet — and then one day, without warning, they knock anyway, and you let them in.</p>
+      <p class="label"><span lang="en">Chapter Four</span><span lang="id">Bab Empat</span></p>
+      <h1><span lang="en">The Hours I Hoped Would Never Come</span><span lang="id">Jam-Jam yang Kuharap Tak Pernah Datang</span></h1>
+      <p class="sub">
+        <span lang="en">Some moments you spend your whole life hoping never to meet — and then one day, without warning, they knock anyway, and you let them in.</span>
+        <span lang="id">Ada momen-momen yang kau habiskan seumur hidup berharap tak pernah bertemu dengannya — lalu suatu hari, tanpa peringatan, ia tetap mengetuk, dan kau membiarkannya masuk.</span>
+      </p>
     </div>
 
     <article>
-      <p>By the time Evelyn had settled into a quiet, finished kind of past, junior high had already moved on to its next chapter without asking me — slower this time, and far more complicated than anything that came before it.</p>
-      <p>Her name was Kellen. We'd been friends since grade seven, though for a long while that friendship barely registered as anything — just two names in the same crowd of names. I don't even remember the exact point where talking to her stopped being incidental and started being something I looked forward to. It just happened the way most real things happen: without an announcement.</p>
-      <p>By then I was still carrying what Nicole had left behind — the ache mostly quiet now, but not gone, tucked somewhere under two years of midnight push-ups and shadow boxing. I noticed Kellen anyway. The old wound didn't stop the new feeling from showing up; it just made me more careful about what I did with it.</p>
+      <p lang="en">By the time Evelyn had settled into a quiet, finished kind of past, junior high had already moved on to its next chapter without asking me — slower this time, and far more complicated than anything that came before it.</p>
+      <p lang="id">Pada saat Evelyn sudah mengendap menjadi masa lalu yang tenang dan selesai, SMP sudah berpindah ke babnya yang berikutnya tanpa bertanya padaku — lebih lambat kali ini, dan jauh lebih rumit dari apa pun yang pernah terjadi sebelumnya.</p>
+      <p lang="en">Her name was Kellen. We'd been friends since grade seven, though for a long while that friendship barely registered as anything — just two names in the same crowd of names. I don't even remember the exact point where talking to her stopped being incidental and started being something I looked forward to. It just happened the way most real things happen: without an announcement.</p>
+      <p lang="id">Namanya Kellen. Kami sudah berteman sejak kelas tujuh, meski untuk waktu yang lama pertemanan itu nyaris tak terasa berarti — hanya dua nama di antara banyak nama lainnya. Aku bahkan tak ingat persis titik di mana mengobrol dengannya berhenti menjadi hal kebetulan dan mulai menjadi sesuatu yang kunantikan. Semua itu terjadi begitu saja, cara kebanyakan hal nyata terjadi: tanpa pengumuman.</p>
+      <p lang="en">By then I was still carrying what Nicole had left behind — the ache mostly quiet now, but not gone, tucked somewhere under two years of midnight push-ups and shadow boxing. I noticed Kellen anyway. The old wound didn't stop the new feeling from showing up; it just made me more careful about what I did with it.</p>
+      <p lang="id">Saat itu aku masih memikul apa yang ditinggalkan Nicole — sakitnya sebagian besar sudah tenang sekarang, tapi tidak hilang, tersembunyi di bawah dua tahun push-up dan shadow boxing tengah malam. Tapi aku tetap memperhatikan Kellen. Luka lama itu tidak menghentikan perasaan baru untuk muncul; ia hanya membuatku lebih berhati-hati dengan apa yang kulakukan terhadapnya.</p>
 
       <hr class="divider">
-      <h2>The Switch I Almost Refused</h2>
-      <p>Our school ran an annual event called the SMP Sport and Art Festival — categories for everything, sport and performance both. I was already committed to Wushu, the discipline I'd trained in for a while by then, strong and straight-lined, built on stances and strikes rather than anything that moved like water. I also had basketball lined up.</p>
-      <p>Then a friend of mine, a boy in the Modern Dance category, asked if I'd switch with him — take his spot in dance, let him take mine in basketball.</p>
-      <p>My first instinct was no. Dance wasn't my category, wasn't my language. But Kellen was in that group. And somewhere between the asking and the answering, I did the math on what I actually wanted more — and said yes.</p>
+      <h2 lang="en">The Switch I Almost Refused</h2>
+      <h2 lang="id">Pertukaran yang Hampir Kutolak</h2>
+      <p lang="en">Our school ran an annual event called the SMP Sport and Art Festival — categories for everything, sport and performance both. I was already committed to Wushu, the discipline I'd trained in for a while by then, strong and straight-lined, built on stances and strikes rather than anything that moved like water. I also had basketball lined up.</p>
+      <p lang="id">Sekolah kami mengadakan acara tahunan bernama SMP Sport and Art Festival — ada kategori untuk segala hal, olahraga maupun pertunjukan. Aku sudah berkomitmen pada Wushu, disiplin yang sudah kulatih cukup lama saat itu, kuat dan lurus, dibangun dari kuda-kuda dan pukulan alih-alih sesuatu yang mengalir seperti air. Aku juga sudah terdaftar di basket.</p>
+      <p lang="en">Then a friend of mine, a boy in the Modern Dance category, asked if I'd switch with him — take his spot in dance, let him take mine in basketball.</p>
+      <p lang="id">Lalu seorang temanku, cowok yang ikut kategori Modern Dance, bertanya apakah aku mau bertukar dengannya — mengambil tempatnya di dance, membiarkan dia mengambil tempatku di basket.</p>
+      <p lang="en">My first instinct was no. Dance wasn't my category, wasn't my language. But Kellen was in that group. And somewhere between the asking and the answering, I did the math on what I actually wanted more — and said yes.</p>
+      <p lang="id">Instingku yang pertama adalah menolak. Dance bukan duniaku, bukan bahasaku. Tapi Kellen ada di grup itu. Dan di suatu titik antara pertanyaan dan jawabannya, aku menghitung apa yang sebenarnya lebih kuinginkan — dan aku pun berkata ya.</p>
 
       <hr class="divider">
-      <h2>Learning a Flexibility I Didn't Have</h2>
-      <p>Wushu had taught me one kind of flexibility — the kind built through stretching, through discipline, through forcing a joint slightly further than it wants to go. Modern dance wanted something else entirely. Not stretch, but sway. Not strike, but drift. My body, trained for years to be sharp and controlled, now had to learn how to be loose, almost liquid, in ways that felt embarrassing every single time I got it wrong — which, at first, was often.</p>
-      <p>I trained anyway. Awkward, stiff, clearly out of my depth next to people who moved like the choreography was already in their bones — I kept showing up, because showing up meant being near her.</p>
+      <h2 lang="en">Learning a Flexibility I Didn't Have</h2>
+      <h2 lang="id">Belajar Kelenturan yang Tak Kumiliki</h2>
+      <p lang="en">Wushu had taught me one kind of flexibility — the kind built through stretching, through discipline, through forcing a joint slightly further than it wants to go. Modern dance wanted something else entirely. Not stretch, but sway. Not strike, but drift. My body, trained for years to be sharp and controlled, now had to learn how to be loose, almost liquid, in ways that felt embarrassing every single time I got it wrong — which, at first, was often.</p>
+      <p lang="id">Wushu mengajariku satu jenis kelenturan — jenis yang dibangun lewat peregangan, lewat disiplin, lewat memaksa sendi bergerak sedikit lebih jauh dari batasnya. Modern dance menginginkan sesuatu yang sepenuhnya berbeda. Bukan regangan, melainkan ayunan. Bukan pukulan, melainkan alunan. Tubuhku, yang bertahun-tahun dilatih untuk tajam dan terkendali, kini harus belajar menjadi longgar, nyaris seperti air, dengan cara yang terasa memalukan setiap kali aku melakukannya salah — yang, pada awalnya, sering terjadi.</p>
+      <p lang="en">I trained anyway. Awkward, stiff, clearly out of my depth next to people who moved like the choreography was already in their bones — I kept showing up, because showing up meant being near her.</p>
+      <p lang="id">Tapi aku tetap berlatih. Canggung, kaku, jelas kalah jauh dibanding orang-orang yang bergerak seolah koreografi itu sudah tertanam di tulang mereka — aku terus datang, karena datang berarti berada di dekatnya.</p>
 
       <hr class="divider">
-      <h2>A Game, and a Story That Didn't Add Up Yet</h2>
-      <p>Somewhere between rehearsals, during a shopping trip for performance outfits, Kellen and I exchanged Mobile Legends accounts — the kind of small, almost accidental intimacy that ends up mattering more than it should. She turned out to be good. I wasn't. We played constantly in the weeks leading up to the festival, matches stacking up night after night, the game becoming less about the game and more about an excuse to keep talking.</p>
-      <p>It was during one of those sessions, or maybe during a break at rehearsal, that she told the group about her ex — a guy named Jeafer. She said he used to like her, that they'd been something once, and that it ended because of how he treated her — some phrase along the lines of <em>he just didn't treat girls right, I didn't like his attitude.</em> We listened. I filed it away as one more piece of who she was.</p>
+      <h2 lang="en">A Game, and a Story That Didn't Add Up Yet</h2>
+      <h2 lang="id">Sebuah Permainan, dan Cerita yang Belum Masuk Akal</h2>
+      <p lang="en">Somewhere between rehearsals, during a shopping trip for performance outfits, Kellen and I exchanged Mobile Legends accounts — the kind of small, almost accidental intimacy that ends up mattering more than it should. She turned out to be good. I wasn't. We played constantly in the weeks leading up to the festival, matches stacking up night after night, the game becoming less about the game and more about an excuse to keep talking.</p>
+      <p lang="id">Di sela-sela latihan, saat belanja kostum pertunjukan, Kellen dan aku saling bertukar akun Mobile Legends — jenis kedekatan kecil yang hampir tak disengaja namun berakhir lebih berarti dari seharusnya. Ternyata dia jago. Aku tidak. Kami main terus-menerus selama berminggu-minggu menjelang festival, pertandingan menumpuk malam demi malam, permainan itu makin lama makin bukan soal permainan, melainkan alasan untuk terus mengobrol.</p>
+      <p lang="en">It was during one of those sessions, or maybe during a break at rehearsal, that she told the group about her ex — a guy named Jeafer. She said he used to like her, that they'd been something once, and that it ended because of how he treated her — some phrase along the lines of <em>he just didn't treat girls right, I didn't like his attitude.</em> We listened. I filed it away as one more piece of who she was.</p>
+      <p lang="id">Di salah satu sesi itu, atau mungkin saat jeda latihan, dia bercerita pada kami semua soal mantannya — seorang cowok bernama Jeafer. Katanya dulu dia menyukainya, mereka pernah "jadian" dalam arti tertentu, dan hubungan itu berakhir karena cara dia memperlakukannya — sesuatu seperti <em>dia memang nggak tahu cara memperlakukan cewek dengan benar, aku nggak suka sikapnya.</em> Kami mendengarkan. Kusimpan itu sebagai satu lagi keping dari siapa dirinya.</p>
 
       <hr class="divider">
-      <h2>The Performance</h2>
-      <p>The final day arrived and I was nervous in a way Wushu exhibitions had never made me — those had certainty, stances I'd drilled a thousand times, performed for an audience but never judged against one. This had none of that certainty. My movements were still stiff next to the others, still carrying the straight lines of a different discipline in a dance that wanted curves. But we performed anyway, the whole group moving as one, and somehow — stiffness and all — we placed top four.</p>
-      <p>Afterward, the whole group went to the mall together to celebrate, loud and relieved, everyone still half-dressed in performance clothes, laughing about nothing in particular. It felt, for a few hours, like something uncomplicated.</p>
+      <h2 lang="en">The Performance</h2>
+      <h2 lang="id">Hari Pertunjukan</h2>
+      <p lang="en">The final day arrived and I was nervous in a way Wushu exhibitions had never made me — those had certainty, stances I'd drilled a thousand times, performed for an audience but never judged against one. This had none of that certainty. My movements were still stiff next to the others, still carrying the straight lines of a different discipline in a dance that wanted curves. But we performed anyway, the whole group moving as one, and somehow — stiffness and all — we placed top four.</p>
+      <p lang="id">Hari terakhir pun tiba dan aku gugup dengan cara yang tak pernah kurasakan di pertunjukan Wushu — itu punya kepastian, kuda-kuda yang sudah kulatih ribuan kali, tampil untuk penonton tapi tak pernah dinilai melawan siapa pun. Ini sama sekali tak punya kepastian itu. Gerakanku masih kaku dibanding yang lain, masih membawa garis-garis lurus dari disiplin yang berbeda ke dalam tarian yang menginginkan lengkungan. Tapi kami tetap tampil, seluruh grup bergerak sebagai satu, dan entah bagaimana — dengan segala kekakuan itu — kami masuk empat besar.</p>
+      <p lang="en">Afterward, the whole group went to the mall together to celebrate, loud and relieved, everyone still half-dressed in performance clothes, laughing about nothing in particular. It felt, for a few hours, like something uncomplicated.</p>
+      <p lang="id">Setelahnya, seluruh grup pergi ke mal bersama untuk merayakan, ribut dan lega, semua orang masih setengah berkostum pertunjukan, tertawa tanpa alasan yang jelas. Untuk beberapa jam, semuanya terasa sederhana.</p>
 
       <hr class="divider">
-      <h2>The Tease That Confirmed It</h2>
-      <p>It wasn't a DM, or a confession, or anything that direct. Kellen had posted a WhatsApp status — a video with a caption that only made sense if you already suspected what it was hinting at — and she'd restricted it to just a handful of close friends. One of those friends happened to be close to me too, and word found its way back: the status was about me.</p>
-      <p>I did the only thing a part of me apparently knew how to do with information like that: I teased her about it, dropping hints, circling the subject until she realized I already knew. She didn't deny it. From there, whatever had been unnamed between us shifted into something clearer, unspoken but understood. Long school holidays arrived right after, and for a while it was just the two of us playing games for hours at a time, the kind of closeness that doesn't need a label to feel real.</p>
+      <h2 lang="en">The Tease That Confirmed It</h2>
+      <h2 lang="id">Godaan yang Memastikan Semuanya</h2>
+      <p lang="en">It wasn't a DM, or a confession, or anything that direct. Kellen had posted a WhatsApp status — a video with a caption that only made sense if you already suspected what it was hinting at — and she'd restricted it to just a handful of close friends. One of those friends happened to be close to me too, and word found its way back: the status was about me.</p>
+      <p lang="id">Itu bukan DM, bukan pengakuan, bukan sesuatu yang sedirect itu. Kellen memposting status WhatsApp — sebuah video dengan keterangan yang hanya masuk akal jika kau sudah mencurigai apa yang sedang disiratkannya — dan dia membatasinya hanya untuk beberapa teman dekat saja. Salah satu dari teman itu kebetulan juga dekat denganku, dan kabarnya sampai juga padaku: status itu tentang aku.</p>
+      <p lang="en">I did the only thing a part of me apparently knew how to do with information like that: I teased her about it, dropping hints, circling the subject until she realized I already knew. She didn't deny it. From there, whatever had been unnamed between us shifted into something clearer, unspoken but understood. Long school holidays arrived right after, and for a while it was just the two of us playing games for hours at a time, the kind of closeness that doesn't need a label to feel real.</p>
+      <p lang="id">Aku melakukan satu-satunya hal yang rupanya sudah kutahu cara melakukannya dengan informasi semacam itu: aku menggodanya soal itu, melempar petunjuk, berputar-putar di sekitar topiknya sampai dia sadar aku sudah tahu. Dia tidak menyangkalnya. Sejak itu, apa pun yang sebelumnya tanpa nama di antara kami bergeser menjadi sesuatu yang lebih jelas, tak terucap tapi dipahami. Libur panjang sekolah datang tak lama setelahnya, dan untuk sementara waktu kami berdua hanya main game berjam-jam, jenis kedekatan yang tak butuh label untuk terasa nyata.</p>
 
       <hr class="divider">
-      <h2>The Salt in the Scar</h2>
-      <p>Then holidays ended, and so did the uncomplicated part.</p>
-      <p>A few days after we were back at school, I saw Kellen with Jeafer — talking easily, comfortably, like old friends who had never had a bad word between them. It didn't match anything she'd told us. The same guy she said mistreated her, the same guy whose attitude she claimed to dislike, and here she was laughing next to him like none of that had ever been said.</p>
-      <p>It confused me before it hurt me. Then it did both. It wasn't even about losing her to him — it was the unnecessary nature of the lie, a story told for no clear reason that I could find, which made it worse somehow than if she'd simply changed her mind about him in silence.</p>
-      <p>We grew apart after that, slowly and then completely. She kept drifting back toward Jeafer. I kept drifting away from both of them.</p>
+      <h2 lang="en">The Salt in the Scar</h2>
+      <h2 lang="id">Garam di Atas Luka</h2>
+      <p lang="en">Then holidays ended, and so did the uncomplicated part.</p>
+      <p lang="id">Lalu libur pun berakhir, begitu pula bagian yang sederhana itu.</p>
+      <p lang="en">A few days after we were back at school, I saw Kellen with Jeafer — talking easily, comfortably, like old friends who had never had a bad word between them. It didn't match anything she'd told us. The same guy she said mistreated her, the same guy whose attitude she claimed to dislike, and here she was laughing next to him like none of that had ever been said.</p>
+      <p lang="id">Beberapa hari setelah kami kembali sekolah, aku melihat Kellen bersama Jeafer — mengobrol santai, akrab, seperti teman lama yang tak pernah punya masalah sama sekali. Semua itu tak cocok dengan apa pun yang pernah dia ceritakan pada kami. Cowok yang sama yang katanya pernah memperlakukannya buruk, cowok yang sama yang sikapnya katanya tidak dia sukai, dan di sinilah dia, tertawa di sampingnya seolah semua cerita itu tak pernah diucapkan.</p>
+      <p lang="en">It confused me before it hurt me. Then it did both. It wasn't even about losing her to him — it was the unnecessary nature of the lie, a story told for no clear reason that I could find, which made it worse somehow than if she'd simply changed her mind about him in silence.</p>
+      <p lang="id">Itu membingungkanku sebelum menyakitiku. Lalu keduanya terjadi sekaligus. Ini bahkan bukan soal kehilangannya pada Jeafer — melainkan sifat kebohongan itu yang sebenarnya tak perlu, sebuah cerita yang diceritakan tanpa alasan jelas yang bisa kutemukan, yang entah bagaimana membuatnya terasa lebih buruk dibanding jika dia hanya diam-diam berubah pikiran soal cowok itu.</p>
+      <p lang="en">We grew apart after that, slowly and then completely. She kept drifting back toward Jeafer. I kept drifting away from both of them.</p>
+      <p lang="id">Kami pun menjauh setelah itu, perlahan lalu sepenuhnya. Dia terus kembali mendekat ke Jeafer. Aku terus menjauh dari mereka berdua.</p>
 
       <hr class="divider">
-      <h2>What It Cost</h2>
-      <p>This one didn't just add a new wound — it reopened the old one, Nicole's ache and this one fusing into something heavier than either alone. It lasted around five months, and the old ritual came back with it, harder this time, eating into sleep I didn't have to spare.</p>
-      <p>What it left behind wasn't discipline this time, just exhaustion — breaktimes and empty lesson periods turning into stolen twenty-minute naps, head down on a desk, in a classroom that had no idea what it was looking at. A few people asked, eventually, why I kept falling asleep like that. <em>I just wanted to,</em> I'd say, and leave it there. It was easier than the real answer, and nobody pushed past it.</p>
+      <h2 lang="en">What It Cost</h2>
+      <h2 lang="id">Harga yang Harus Dibayar</h2>
+      <p lang="en">This one didn't just add a new wound — it reopened the old one, Nicole's ache and this one fusing into something heavier than either alone. It lasted around five months, and the old ritual came back with it, harder this time, eating into sleep I didn't have to spare.</p>
+      <p lang="id">Yang ini bukan hanya menambah luka baru — ia membuka kembali luka lama, sakit dari Nicole dan sakit ini melebur menjadi sesuatu yang lebih berat dibanding keduanya sendiri-sendiri. Berlangsung sekitar lima bulan, dan ritual lama kembali bersamanya, lebih keras kali ini, memakan waktu tidur yang sebenarnya tak kupunya cukup.</p>
+      <p lang="en">What it left behind wasn't discipline this time, just exhaustion — breaktimes and empty lesson periods turning into stolen twenty-minute naps, head down on a desk, in a classroom that had no idea what it was looking at. A few people asked, eventually, why I kept falling asleep like that. <em>I just wanted to,</em> I'd say, and leave it there. It was easier than the real answer, and nobody pushed past it.</p>
+      <p lang="id">Yang ditinggalkannya kali ini bukan disiplin, hanya kelelahan — jam istirahat dan jam kosong berubah menjadi tidur siang curian dua puluh menit, kepala tertunduk di meja, di dalam kelas yang tak tahu apa yang sedang dilihatnya. Beberapa orang akhirnya bertanya, kenapa aku terus-menerus tertidur begitu. <em>Aku cuma pengen aja,</em> jawabku, lalu kubiarkan begitu saja. Itu lebih mudah dibanding jawaban yang sebenarnya, dan tak ada yang mendesak lebih jauh.</p>
 
-      <p class="chapter-end">End of Chapter Four.</p>
+      <p class="chapter-end"><span lang="en">End of Chapter Four.</span><span lang="id">Akhir Bab Empat.</span></p>
     </article>
+
   </main>
 
-  <footer>Blind Hope — a life, told in chapters</footer>
+  <footer>
+    <span lang="en">Blind Hope — a life, told in chapters</span>
+    <span lang="id">Blind Hope — sebuah kehidupan, diceritakan dalam bab-bab</span>
+  </footer>
 
 <script>
+  // Language toggle — switches html[data-site-lang], persists per-viewer via localStorage
+  (function() {
+    var html = document.documentElement;
+    var buttons = document.querySelectorAll('.lang-toggle button');
+
+    function setLang(lang) {
+      html.setAttribute('data-site-lang', lang);
+      buttons.forEach(function(b) {
+        b.classList.toggle('active', b.getAttribute('data-set-lang') === lang);
+      });
+      try { localStorage.setItem('bh_lang', lang); } catch (e) {}
+    }
+
+    buttons.forEach(function(b) {
+      b.addEventListener('click', function() {
+        setLang(b.getAttribute('data-set-lang'));
+      });
+    });
+
+    try {
+      var saved = localStorage.getItem('bh_lang');
+      if (saved === 'en' || saved === 'id') setLang(saved);
+    } catch (e) {}
+  })();
+
   // Scrollspy — highlights the chapter link matching current scroll position
   (function() {
     var sections = [
