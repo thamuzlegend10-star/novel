@@ -115,33 +115,94 @@
     text-decoration: none;
     flex-shrink: 0;
   }
-  .chapter-nav {
-    display: flex;
-    gap: clamp(14px, 2.5vw, 28px);
-    align-items: center;
-    overflow-x: auto;
-    scrollbar-width: none;
+  /* ---------- Chapter selector (dropdown) ---------- */
+  .chapter-select {
+    position: relative;
     flex: 1;
     min-width: 0;
+    max-width: 320px;
   }
-  .chapter-nav::-webkit-scrollbar { display: none; }
-  .chapter-nav a {
+  .chapter-select-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    appearance: none;
+    border: 1px solid rgba(239,227,207,0.16);
+    background: rgba(239,227,207,0.06);
     color: var(--bar-fg);
-    opacity: 0.6;
-    text-decoration: none;
+    font-family: inherit;
     font-size: 0.85rem;
-    white-space: nowrap;
-    padding: 6px 2px;
-    border-bottom: 1px solid transparent;
-    transition: opacity 0.2s ease, border-color 0.2s ease;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
   }
-  .chapter-nav a:hover,
-  .chapter-nav a:focus-visible,
-  .chapter-nav a.active {
-    opacity: 1;
+  .chapter-select-btn:hover,
+  .chapter-select-btn:focus-visible {
+    background: rgba(239,227,207,0.12);
     border-color: var(--accent-soft);
   }
-  .chapter-nav a:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 3px; }
+  .chapter-select-btn:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 2px; }
+  .chapter-select-btn .current {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .chapter-select-btn .chevron {
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg) translateY(-2px);
+    opacity: 0.7;
+    transition: transform 0.2s ease;
+  }
+  .chapter-select.open .chevron { transform: rotate(225deg) translateY(1px); }
+
+  .chapter-select-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    min-width: 240px;
+    background: var(--bar-bg);
+    border: 1px solid rgba(239,227,207,0.14);
+    border-radius: 12px;
+    padding: 6px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.28);
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity 0.16s ease, transform 0.16s ease;
+    z-index: 110;
+  }
+  .chapter-select.open .chapter-select-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .chapter-select-menu a {
+    display: block;
+    color: var(--bar-fg);
+    text-decoration: none;
+    font-size: 0.88rem;
+    padding: 9px 12px;
+    border-radius: 8px;
+    opacity: 0.75;
+    transition: opacity 0.15s ease, background 0.15s ease;
+  }
+  .chapter-select-menu a:hover,
+  .chapter-select-menu a:focus-visible {
+    opacity: 1;
+    background: rgba(239,227,207,0.08);
+  }
+  .chapter-select-menu a.active {
+    opacity: 1;
+    color: var(--accent-soft);
+  }
 
   /* ---------- Ambient idle motes (decorative, non-blocking) ---------- */
   .ambient {
@@ -254,7 +315,8 @@
   @media (max-width: 560px) {
     .brand { font-size: 1rem; }
     main { padding-top: 108px; }
-    .chapter-nav a { font-size: 0.78rem; }
+    .chapter-select-btn { font-size: 0.8rem; padding: 7px 10px; }
+    .chapter-select { max-width: none; }
   }
 </style>
 </head>
@@ -262,11 +324,20 @@
 
   <nav class="taskbar">
     <a href="#top" class="brand">Blind Hope</a>
-    <div class="chapter-nav">
-      <a href="#ch1"><span lang="en">Ch. 1 — Nicole</span><span lang="id">Bab 1 — Nicole</span></a>
-      <a href="#ch2"><span lang="en">Ch. 2 — Cici</span><span lang="id">Bab 2 — Cici</span></a>
-      <a href="#ch3"><span lang="en">Ch. 3 — Evelyn</span><span lang="id">Bab 3 — Evelyn</span></a>
-      <a href="#ch4"><span lang="en">Ch. 4 — Kellen</span><span lang="id">Bab 4 — Kellen</span></a>
+    <div class="chapter-select" id="chapterSelect">
+      <button type="button" class="chapter-select-btn" id="chapterSelectBtn" aria-haspopup="listbox" aria-expanded="false">
+        <span class="current">
+          <span lang="en">Select Chapter — Ch. 1 Nicole</span>
+          <span lang="id">Pilih Bab — Bab 1 Nicole</span>
+        </span>
+        <span class="chevron" aria-hidden="true"></span>
+      </button>
+      <div class="chapter-select-menu" role="listbox">
+        <a href="#ch1" data-label-en="Ch. 1 — Nicole" data-label-id="Bab 1 — Nicole"><span lang="en">Ch. 1 — Nicole</span><span lang="id">Bab 1 — Nicole</span></a>
+        <a href="#ch2" data-label-en="Ch. 2 — Cici" data-label-id="Bab 2 — Cici"><span lang="en">Ch. 2 — Cici</span><span lang="id">Bab 2 — Cici</span></a>
+        <a href="#ch3" data-label-en="Ch. 3 — Evelyn" data-label-id="Bab 3 — Evelyn"><span lang="en">Ch. 3 — Evelyn</span><span lang="id">Bab 3 — Evelyn</span></a>
+        <a href="#ch4" data-label-en="Ch. 4 — Kellen" data-label-id="Bab 4 — Kellen"><span lang="en">Ch. 4 — Kellen</span><span lang="id">Bab 4 — Kellen</span></a>
+      </div>
     </div>
     <div class="lang-toggle" role="group" aria-label="Language">
       <button type="button" data-set-lang="en" class="active">EN</button>
@@ -578,6 +649,16 @@
         b.classList.toggle('active', b.getAttribute('data-set-lang') === lang);
       });
       try { localStorage.setItem('bh_lang', lang); } catch (e) {}
+
+      // Refresh the chapter dropdown's current label to match the new language,
+      // keeping whichever chapter is currently selected.
+      var btnLabel = document.querySelector('#chapterSelectBtn .current');
+      var activeLink = document.querySelector('.chapter-select-menu a.active') || document.querySelector('.chapter-select-menu a');
+      if (btnLabel && activeLink) {
+        var text = lang === 'id' ? activeLink.getAttribute('data-label-id') : activeLink.getAttribute('data-label-en');
+        var prefix = lang === 'id' ? 'Pilih Bab — ' : 'Select Chapter — ';
+        btnLabel.textContent = prefix + text;
+      }
     }
 
     buttons.forEach(function(b) {
@@ -590,6 +671,42 @@
       var saved = localStorage.getItem('bh_lang');
       if (saved === 'en' || saved === 'id') setLang(saved);
     } catch (e) {}
+  })();
+
+  // Chapter dropdown — open/close, current-label update, click-outside + Escape to close
+  (function() {
+    var wrap = document.getElementById('chapterSelect');
+    var btn = document.getElementById('chapterSelectBtn');
+    var btnLabel = btn.querySelector('.current');
+    var menu = wrap.querySelector('.chapter-select-menu');
+    var links = Array.prototype.slice.call(menu.querySelectorAll('a'));
+
+    function closeMenu() {
+      wrap.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+    function openMenu() {
+      wrap.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+    btn.addEventListener('click', function() {
+      wrap.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    document.addEventListener('click', function(e) {
+      if (!wrap.contains(e.target)) closeMenu();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+    links.forEach(function(a) {
+      a.addEventListener('click', function() {
+        var lang = document.documentElement.getAttribute('data-site-lang') || 'en';
+        var text = lang === 'id' ? a.getAttribute('data-label-id') : a.getAttribute('data-label-en');
+        var prefix = lang === 'id' ? 'Pilih Bab — ' : 'Select Chapter — ';
+        btnLabel.textContent = prefix + text;
+        closeMenu();
+      });
+    });
   })();
 
   // Scrollspy — highlights the chapter link matching current scroll position
