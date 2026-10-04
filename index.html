@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Blind Hope</title>
+<title>Dreams On</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Serif+4:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -242,6 +242,34 @@
     margin: 0 auto;
     padding: calc(64px + 64px) 24px 120px;
   }
+  .chapter-page { display: none; }
+  .chapter-page.active { display: block; }
+
+  .chapter-pager {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--hairline);
+  }
+  .pager-spacer { flex: 1; }
+  .pager-btn {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-style: italic;
+    padding: 6px 2px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .pager-btn:hover, .pager-btn:focus-visible {
+    color: var(--accent);
+    border-color: var(--accent-soft);
+  }
+  .pager-prev { text-align: left; }
+  .pager-next { text-align: right; margin-left: auto; }
   .hero {
     padding-bottom: 40px;
     margin-bottom: 40px;
@@ -323,7 +351,7 @@
 <body>
 
   <nav class="taskbar">
-    <a href="#top" class="brand">Blind Hope</a>
+    <a href="#top" class="brand">Dreams On</a>
     <div class="chapter-select" id="chapterSelect">
       <button type="button" class="chapter-select-btn" id="chapterSelectBtn" aria-haspopup="listbox" aria-expanded="false">
         <span class="current">
@@ -337,6 +365,7 @@
         <a href="#ch2" data-label-en="Ch. 2 — Cici" data-label-id="Bab 2 — Cici"><span lang="en">Ch. 2 — Cici</span><span lang="id">Bab 2 — Cici</span></a>
         <a href="#ch3" data-label-en="Ch. 3 — Evelyn" data-label-id="Bab 3 — Evelyn"><span lang="en">Ch. 3 — Evelyn</span><span lang="id">Bab 3 — Evelyn</span></a>
         <a href="#ch4" data-label-en="Ch. 4 — Kellen" data-label-id="Bab 4 — Kellen"><span lang="en">Ch. 4 — Kellen</span><span lang="id">Bab 4 — Kellen</span></a>
+        <a href="#ch5" data-label-en="Ch. 5 — Roschella" data-label-id="Bab 5 — Roschella"><span lang="en">Ch. 5 — Roschella</span><span lang="id">Bab 5 — Roschella</span></a>
       </div>
     </div>
     <div class="lang-toggle" role="group" aria-label="Language">
@@ -350,7 +379,8 @@
   <main id="top">
 
     <!-- ===================== CHAPTER ONE ===================== -->
-    <div class="hero" id="ch1">
+    <section class="chapter-page" id="ch1" data-chapter="ch1">
+    <div class="hero">
       <p class="label"><span lang="en">Chapter One</span><span lang="id">Bab Satu</span></p>
       <h1><span lang="en">The Weight I Built in the Dark</span><span lang="id">Beban yang Kubangun dalam Gelap</span></h1>
       <p class="sub">
@@ -451,9 +481,17 @@
 
       <p class="chapter-end"><span lang="en">End of Chapter One.</span><span lang="id">Akhir Bab Satu.</span></p>
     </article>
+    <nav class="chapter-pager">
+      <span class="pager-spacer"></span>
+      <a href="#ch2" class="pager-btn pager-next" data-chapter="ch2">
+        <span lang="en">Next: Cici →</span><span lang="id">Lanjut: Cici →</span>
+      </a>
+    </nav>
+    </section>
 
     <!-- ===================== CHAPTER TWO ===================== -->
-    <div class="hero" id="ch2" style="margin-top: 80px;">
+    <section class="chapter-page" id="ch2" data-chapter="ch2">
+    <div class="hero">
       <p class="label"><span lang="en">Chapter Two</span><span lang="id">Bab Dua</span></p>
       <h1><span lang="en">The Hint I Never Caught</span><span lang="id">Petunjuk yang Tak Pernah Kutangkap</span></h1>
       <p class="sub">
@@ -502,9 +540,19 @@
 
       <p class="chapter-end"><span lang="en">End of Chapter Two.</span><span lang="id">Akhir Bab Dua.</span></p>
     </article>
+    <nav class="chapter-pager">
+      <a href="#ch1" class="pager-btn pager-prev" data-chapter="ch1">
+        <span lang="en">← Nicole</span><span lang="id">← Nicole</span>
+      </a>
+      <a href="#ch3" class="pager-btn pager-next" data-chapter="ch3">
+        <span lang="en">Next: Evelyn →</span><span lang="id">Lanjut: Evelyn →</span>
+      </a>
+    </nav>
+    </section>
 
     <!-- ===================== CHAPTER THREE ===================== -->
-    <div class="hero" id="ch3" style="margin-top: 80px;">
+    <section class="chapter-page" id="ch3" data-chapter="ch3">
+    <div class="hero">
       <p class="label"><span lang="en">Chapter Three</span><span lang="id">Bab Tiga</span></p>
       <h1><span lang="en">The Question I Already Knew the Answer To</span><span lang="id">Pertanyaan yang Jawabannya Sudah Kutahu</span></h1>
       <p class="sub">
@@ -546,9 +594,19 @@
 
       <p class="chapter-end"><span lang="en">End of Chapter Three.</span><span lang="id">Akhir Bab Tiga.</span></p>
     </article>
+    <nav class="chapter-pager">
+      <a href="#ch2" class="pager-btn pager-prev" data-chapter="ch2">
+        <span lang="en">← Cici</span><span lang="id">← Cici</span>
+      </a>
+      <a href="#ch4" class="pager-btn pager-next" data-chapter="ch4">
+        <span lang="en">Next: Kellen →</span><span lang="id">Lanjut: Kellen →</span>
+      </a>
+    </nav>
+    </section>
 
     <!-- ===================== CHAPTER FOUR ===================== -->
-    <div class="hero" id="ch4" style="margin-top: 80px;">
+    <section class="chapter-page" id="ch4" data-chapter="ch4">
+    <div class="hero">
       <p class="label"><span lang="en">Chapter Four</span><span lang="id">Bab Empat</span></p>
       <h1><span lang="en">The Hours I Hoped Would Never Come</span><span lang="id">Jam-Jam yang Kuharap Tak Pernah Datang</span></h1>
       <p class="sub">
@@ -629,12 +687,83 @@
 
       <p class="chapter-end"><span lang="en">End of Chapter Four.</span><span lang="id">Akhir Bab Empat.</span></p>
     </article>
+    <nav class="chapter-pager">
+      <a href="#ch3" class="pager-btn pager-prev" data-chapter="ch3">
+        <span lang="en">← Evelyn</span><span lang="id">← Evelyn</span>
+      </a>
+      <a href="#ch5" class="pager-btn pager-next" data-chapter="ch5">
+        <span lang="en">Next: Roschella →</span><span lang="id">Lanjut: Roschella →</span>
+      </a>
+    </nav>
+    </section>
+
+    <!-- ===================== CHAPTER FIVE ===================== -->
+    <section class="chapter-page" id="ch5" data-chapter="ch5">
+    <div class="hero">
+      <p class="label"><span lang="en">Chapter Five</span><span lang="id">Bab Lima</span></p>
+      <h1><span lang="en">The Chances I Kept Putting Off</span><span lang="id">Kesempatan yang Terus Kutunda</span></h1>
+      <p class="sub">
+        <span lang="en">Some people don't become the one you end up with — they become the lesson that finally teaches you to stop hesitating.</span>
+        <span lang="id">Ada orang yang tidak menjadi pasangan akhir cerita — mereka menjadi pelajaran yang akhirnya mengajarimu berhenti ragu-ragu.</span>
+      </p>
+    </div>
+
+    <article>
+      <p lang="en">By the time senior high started, I wasn't carrying myself the way I used to. So many things had already worn me down by then that my confidence had dropped lower than it had ever been — quiet, smaller, more careful about taking up space. That was the version of me who walked into a new classroom and, without meaning to, found Roschella.</p>
+      <p lang="id">Saat SMA dimulai, aku tidak lagi membawa diriku seperti dulu. Begitu banyak hal sudah menggerogotiku sampai saat itu hingga kepercayaan diriku turun lebih rendah dari yang pernah ada — diam, lebih kecil, lebih berhati-hati mengambil ruang. Itulah versi diriku yang melangkah masuk ke kelas baru dan, tanpa bermaksud begitu, menemukan Roschella.</p>
+
+      <h2 lang="en">Grade Ten</h2>
+      <h2 lang="id">Kelas Sepuluh</h2>
+      <p lang="en">She had a friend named Grace, loud and sharp where Roschella was gentle — the kind of gentle that comes from actually caring how other people are doing, not just performing kindness for show. A few glances in, I recognized the feeling before I could name it. It was the same thing I'd felt looking at Nicole, years earlier. Attraction, immediate and quiet.</p>
+      <p lang="id">Dia punya teman bernama Grace, ribut dan tajam di saat Roschella lembut — jenis kelembutan yang lahir dari benar-benar peduli pada keadaan orang lain, bukan sekadar berpura-pura baik untuk pamer. Setelah beberapa kali melirik, aku mengenali perasaan itu sebelum sempat kunamai. Perasaan yang sama seperti yang kurasakan saat memandang Nicole, bertahun-tahun sebelumnya. Ketertarikan, langsung dan diam-diam.</p>
+      <p lang="en">The first real encounter happened by accident, engineered by a homeroom teacher's seating chart. The whole class got reshuffled — new seats for everyone — and I ended up with Roschella behind me and Grace to my right. Grace, never one to let an opportunity pass, looked straight at me and teased me about something, I don't even remember what. I startled, blushed, turned the only direction that wasn't toward either of them. Both girls laughed. That was it — my introduction to Roschella, delivered entirely by someone else's joke.</p>
+      <p lang="id">Pertemuan nyata pertama terjadi karena kecelakaan, direkayasa oleh bagan tempat duduk wali kelas. Seluruh kelas diacak ulang — kursi baru untuk semua orang — dan aku berakhir dengan Roschella di belakangku dan Grace di sebelah kananku. Grace, yang tak pernah melewatkan kesempatan, menatapku langsung dan menggodaku soal sesuatu, aku bahkan tak ingat apa. Aku kaget, merona, menoleh ke satu-satunya arah yang bukan ke arah mereka berdua. Keduanya tertawa. Itulah perkenalanku dengan Roschella, disampaikan sepenuhnya lewat candaan orang lain.</p>
+      <p lang="en">We didn't talk much after that, not really. The occasional joke passed between us, nothing more. Grace mostly came to me when she needed help with an assignment. Roschella, though, noticed something I didn't think anyone was paying attention to.</p>
+      <p lang="id">Kami tidak terlalu banyak bicara setelah itu, sebenarnya. Sesekali bercanda, tak lebih dari itu. Grace biasanya mendatangiku hanya saat butuh bantuan tugas. Roschella, meski begitu, menyadari sesuatu yang kukira tak diperhatikan siapa pun.</p>
+      <p lang="en">One breaktime, I was asleep at my desk again — a habit left over from the ache Kellen's chapter had carried into me — when I startled awake to find Roschella sitting beside me. She told me, plainly, that I should talk to people more instead of keeping everything locked inside myself. It wasn't a long conversation. But it moved something in me, just slightly, toward being more open.</p>
+      <p lang="id">Suatu kali saat istirahat, aku tertidur lagi di mejaku — kebiasaan sisa dari sakit yang dibawa bab Kellen ke dalam diriku — ketika aku terbangun kaget dan mendapati Roschella duduk di sampingku. Dia bilang, dengan sederhana, bahwa aku harus lebih banyak bicara dengan orang lain daripada memendam semuanya sendiri. Bukan percakapan yang panjang. Tapi itu menggerakkan sesuatu dalam diriku, sedikit saja, ke arah lebih terbuka.</p>
+      <p lang="en">Not long after, during the morning routine where the whole class stands to greet the teacher, my legs got stuck in the cramped space between the desks. Roschella noticed before I even said anything — pulled her table back instinctively to give me room, and smiled while doing it. Something about that small, automatic kindness pulled me further in. I started, quietly and slowly, trying to get closer to her.</p>
+      <p lang="id">Tak lama setelahnya, saat rutinitas pagi di mana seluruh kelas berdiri menyapa guru, kakiku terjepit di ruang sempit antar bangku. Roschella menyadarinya bahkan sebelum aku berkata apa-apa — menarik mejanya ke belakang secara reflek untuk memberiku ruang, sambil tersenyum. Ada sesuatu dari kebaikan kecil dan otomatis itu yang menarikku lebih dalam. Aku mulai, diam-diam dan perlahan, mencoba lebih dekat dengannya.</p>
+      <p lang="en">We shared a Taekwondo extracurricular, which gave us real time together outside the awkwardness of classroom glances. I'd trained in Taekwondo since elementary school, back at Global Prima, though the discipline paused through junior high when my new school — Cinta Budaya, where I stayed through senior high — didn't offer it as an extracurricular. Picking it back up here felt like reclaiming something, and having Roschella there made it feel like more than just training.</p>
+      <p lang="id">Kami sama-sama ikut ekstrakurikuler Taekwondo, yang memberi kami waktu sungguhan bersama di luar canggungnya saling lirik di kelas. Aku sudah berlatih Taekwondo sejak SD, dulu di Global Prima, meski disiplin itu terhenti selama SMP karena sekolah baruku — Cinta Budaya, tempat aku bersekolah sampai SMA — tidak menyediakan ekstrakurikuler itu. Mengambilnya kembali di sini terasa seperti merebut kembali sesuatu, dan kehadiran Roschella membuatnya terasa lebih dari sekadar latihan.</p>
+
+      <h2 lang="en">Grade Eleven</h2>
+      <h2 lang="id">Kelas Sebelas</h2>
+      <p lang="en">That year, an announcement went up — a belt rank-up exam, held every few months by the sabeum. I wasn't particularly interested in testing. The fee alone, 350,000 rupiah, was enough to make me hesitate. But somehow Roschella talked me into it anyway, patient and persistent in a way I didn't have much defense against.</p>
+      <p lang="id">Tahun itu, ada pengumuman — ujian kenaikan sabuk, diadakan setiap beberapa bulan oleh sabeum. Aku sebenarnya tidak terlalu tertarik ikut ujian. Biayanya saja, 350 ribu rupiah, sudah cukup membuatku ragu. Tapi entah bagaimana Roschella tetap berhasil membujukku, sabar dan gigih dengan cara yang tak banyak bisa kulawan.</p>
+      <p lang="en">We trained for it together and went to the GOR on exam day — basic kicks, poomsae, the whole structure of it. We passed together. White belt to yellow, side by side. It's one of the clearest, warmest memories I have from that whole stretch of school — not because the belt mattered that much in the end, but because of who I earned it next to.</p>
+      <p lang="id">Kami berlatih bersama dan pergi ke GOR pada hari ujian — tendangan dasar, poomsae, seluruh rangkaiannya. Kami lulus bersama. Sabuk putih menjadi kuning, berdampingan. Ini salah satu kenangan paling jelas dan hangat yang kupunya dari seluruh masa sekolah itu — bukan karena sabuknya yang penting pada akhirnya, melainkan karena di samping siapa aku meraihnya.</p>
+      <p lang="en">We grew close that year, close enough that when Valentine's came around, I gave her a necklace. I did it again a second time the following year. Both times, she gave something back — chocolate brownies, made or bought with more care than the gesture needed to have. Both times, I never said the actual words. The trauma from before was still doing what trauma does: keeping my mouth shut exactly when it mattered most.</p>
+      <p lang="id">Kami menjadi dekat tahun itu, cukup dekat sampai saat Valentine tiba, aku memberinya kalung. Aku melakukannya lagi di tahun berikutnya. Kedua kalinya, dia membalas dengan sesuatu — brownies cokelat, dibuat atau dibeli dengan perhatian lebih dari yang sebenarnya dibutuhkan gestur itu. Kedua kalinya, aku tak pernah mengucapkan kata-kata yang sebenarnya. Trauma dari masa lalu masih melakukan apa yang biasa dilakukan trauma: membungkam mulutku tepat saat itu paling penting.</p>
+
+      <h2 lang="en">Grade Twelve</h2>
+      <h2 lang="id">Kelas Dua Belas</h2>
+      <p lang="en">By senior year, it was clear in a way I didn't want to admit — Roschella and I weren't going to grow into anything more than what we already were. I thought about confessing anyway, turned the idea over more than once. I canceled the plan every time. Around then, I'd also started noticing someone else: Jessica Tanji, who would go on to become the last chapter of this whole story.</p>
+      <p lang="id">Menjelang tahun terakhir, semuanya jelas dengan cara yang tak ingin kuakui — aku dan Roschella tidak akan tumbuh menjadi lebih dari apa yang sudah ada. Aku tetap memikirkan untuk mengaku, memutar-mutar ide itu lebih dari sekali. Aku selalu membatalkan rencananya. Sekitar waktu itu, aku juga mulai memperhatikan orang lain: Jessica Tanji, yang nantinya akan menjadi bab terakhir dari seluruh kisah ini.</p>
+      <p lang="en">But before I let Roschella's chapter close, I asked her something — half out of curiosity, half out of needing to finally know. What if, back then, I had actually confessed? What would she have said?</p>
+      <p lang="id">Tapi sebelum kubiarkan bab Roschella menutup, aku bertanya sesuatu padanya — setengah karena penasaran, setengah karena butuh akhirnya tahu. Bagaimana kalau, dulu, aku benar-benar mengaku? Apa yang akan dia katakan?</p>
+      <p lang="en">She told me she would have tried — taken the chance, gone on a trial date with me, just to see.</p>
+      <p lang="id">Dia bilang dia akan mencoba — mengambil kesempatan itu, pergi tryout bersamaku, hanya untuk melihat bagaimana jadinya.</p>
+      <p lang="en">That answer didn't hurt the way I expected it to. It did something worse, in a quieter way: it showed me exactly how much time I'd spent overthinking instead of acting, how many real chances I'd let pass by simply because I was too afraid to reach for them. Roschella never became more than a close friend. But she became, without either of us planning it, the clearest lesson I'd carry into whatever came next.</p>
+      <p lang="id">Jawaban itu tidak menyakitkan seperti yang kuduga. Ia melakukan sesuatu yang lebih buruk, dengan cara yang lebih diam: ia menunjukkan padaku persis berapa banyak waktu yang kuhabiskan untuk terlalu banyak berpikir alih-alih bertindak, berapa banyak kesempatan sungguhan yang kubiarkan lewat hanya karena aku terlalu takut untuk meraihnya. Roschella tak pernah menjadi lebih dari sekadar teman dekat. Tapi dia menjadi, tanpa direncanakan oleh kami berdua, pelajaran paling jelas yang kubawa ke mana pun aku melangkah selanjutnya.</p>
+      <p lang="en">Every mistake from every chapter before this one — the overthinking, the silence, the chances left on the table — I promised myself I'd finally stop repeating them. Whatever I had learned, all of it, I was ready to spend on Jessica Tanji. Fully, and without holding back this time.</p>
+      <p lang="id">Setiap kesalahan dari setiap bab sebelum ini — terlalu banyak berpikir, diam, kesempatan yang dibiarkan begitu saja — aku berjanji pada diriku sendiri untuk akhirnya berhenti mengulanginya. Apa pun yang telah kupelajari, semuanya, aku siap curahkan pada Jessica Tanji. Sepenuhnya, dan tanpa menahan diri kali ini.</p>
+
+      <p class="chapter-end"><span lang="en">End of Chapter Five.</span><span lang="id">Akhir Bab Lima.</span></p>
+    </article>
+    <nav class="chapter-pager">
+      <a href="#ch4" class="pager-btn pager-prev" data-chapter="ch4">
+        <span lang="en">← Kellen</span><span lang="id">← Kellen</span>
+      </a>
+      <span class="pager-spacer"></span>
+    </nav>
+    </section>
 
   </main>
 
   <footer>
-    <span lang="en">Blind Hope — a life, told in chapters</span>
-    <span lang="id">Blind Hope — sebuah kehidupan, diceritakan dalam bab-bab</span>
+    <span lang="en">Dreams On — a life, told in chapters</span>
+    <span lang="id">Dreams On — sebuah kehidupan, diceritakan dalam bab-bab</span>
   </footer>
 
 <script>
@@ -709,28 +838,44 @@
     });
   })();
 
-  // Scrollspy — highlights the chapter link matching current scroll position
+  // Page router — shows exactly one chapter at a time, switched via hash
   (function() {
-    var sections = [
-      { id: 'ch1', link: document.querySelector('a[href="#ch1"]') },
-      { id: 'ch2', link: document.querySelector('a[href="#ch2"]') },
-      { id: 'ch3', link: document.querySelector('a[href="#ch3"]') },
-      { id: 'ch4', link: document.querySelector('a[href="#ch4"]') }
-    ];
-    var els = sections.map(function(s) {
-      return { el: document.getElementById(s.id), link: s.link };
-    }).filter(function(s) { return s.el && s.link; });
+    var chapters = ['ch1', 'ch2', 'ch3', 'ch4', 'ch5'];
+    var pages = {};
+    chapters.forEach(function(id) { pages[id] = document.getElementById(id); });
+    var navLinks = document.querySelectorAll('.chapter-select-menu a, .pager-btn');
 
-    function onScroll() {
-      var pos = window.scrollY + 120;
-      var current = els[0];
-      els.forEach(function(s) {
-        if (s.el.offsetTop <= pos) current = s;
+    function showChapter(id, opts) {
+      if (!pages[id]) id = chapters[0];
+      chapters.forEach(function(c) {
+        pages[c].classList.toggle('active', c === id);
       });
-      els.forEach(function(s) { s.link.classList.toggle('active', s === current); });
+      navLinks.forEach(function(a) {
+        var target = a.getAttribute('href') ? a.getAttribute('href').replace('#', '') : a.getAttribute('data-chapter');
+        a.classList.toggle('active', target === id);
+      });
+      if (!opts || !opts.skipScroll) {
+        window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+      }
     }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+
+    function fromHash() {
+      var id = (location.hash || '').replace('#', '');
+      showChapter(chapters.indexOf(id) !== -1 ? id : chapters[0]);
+    }
+
+    document.querySelectorAll('.chapter-select-menu a, .pager-btn').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var id = a.getAttribute('href').replace('#', '');
+        if (chapters.indexOf(id) === -1) return;
+        e.preventDefault();
+        history.pushState(null, '', '#' + id);
+        showChapter(id);
+      });
+    });
+
+    window.addEventListener('popstate', fromHash);
+    fromHash();
   })();
 
   // Idle ambient embers — decorative only, pointer-events disabled, respects reduced motion
