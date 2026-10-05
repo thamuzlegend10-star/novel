@@ -743,6 +743,73 @@
   .gate-btn:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 3px; }
   .gate-lang { position: absolute; top: calc(16px + env(safe-area-inset-top, 0px)); right: 16px; }
   @media (prefers-reduced-motion: reduce) { .pin-row.shake { animation: none; } }
+
+  /* ===== Classic quotes (final layer; supersedes all earlier epigraph styles) ===== */
+  html .chapter-page .epigraph,
+  html .chapter-page.active .epigraph {
+    position: relative; overflow: visible; display: block; text-align: center;
+    max-width: 36rem; margin: 0 auto 60px; padding: 34px 6px 30px;
+    background: none; border-radius: 0; box-shadow: none; color: var(--ink);
+    border: 0;
+    border-top: 1px solid rgba(227,168,143,0.45);
+    border-bottom: 1px solid rgba(227,168,143,0.45);
+    border-top: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    animation: qFade .9s ease both;
+  }
+  html .chapter-page .epigraph::before,
+  html .chapter-page .epigraph::after,
+  html .chapter-page.active .epigraph::before,
+  html .chapter-page.active .epigraph::after { content: none !important; display: none !important; animation: none !important; }
+  html .chapter-page .epigraph .orbit { display: none !important; }
+
+  html .chapter-page .epigraph .ep-label {
+    display: block; margin: 0 0 18px; padding: 0;
+    font-family: var(--f-m); font-style: normal; font-size: .66rem; font-weight: 400;
+    letter-spacing: .26em; text-transform: uppercase; text-align: center;
+    color: var(--accent-soft); animation: none;
+  }
+  html .chapter-page .epigraph .ep-label::before,
+  html .chapter-page .epigraph .ep-label::after,
+  html .chapter-page.active .epigraph .ep-label::before { content: none !important; display: none !important; animation: none !important; box-shadow: none; }
+
+  html .chapter-page .epigraph blockquote {
+    position: static; margin: 0 auto; padding: 0; border: 0; max-width: 30ch;
+    font-family: var(--f-d); font-style: italic; font-weight: 500;
+    font-size: clamp(1.4rem, 4.2vw, 1.85rem); line-height: 1.45; letter-spacing: .005em;
+    color: var(--ink); text-align: center; animation: none;
+  }
+  html .chapter-page .epigraph blockquote::before {
+    content: "\201C"; display: block; position: static; margin: 0 0 .1em;
+    font-family: var(--f-d); font-style: normal; font-size: 2.6rem; line-height: .7;
+    color: var(--accent); opacity: .75;
+  }
+  html .chapter-page .epigraph .ep-by {
+    margin: 22px 0 0; padding: 0; text-align: center; animation: none;
+    font-family: var(--f-m); font-style: normal; font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  html .chapter-page .epigraph .ep-by::before {
+    content: ""; display: block; width: 28px; height: 1px; margin: 0 auto 14px;
+    background: var(--accent); opacity: .7;
+  }
+
+  /* In-text quotes inside chapters */
+  article blockquote {
+    margin: 2em 0; padding: .1em 0 .1em 1.5em; border: 0;
+    border-left: 1px solid var(--accent);
+    font-family: var(--f-d); font-style: italic; font-size: 1.18em; line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  article blockquote p { margin: 0 0 .8em; max-width: none; color: inherit; }
+  article blockquote p:last-child { margin-bottom: 0; }
+  article blockquote cite, article blockquote footer {
+    display: block; margin-top: .8em; font-family: var(--f-m); font-style: normal;
+    font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--accent-soft);
+  }
+
+  @keyframes qFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { html .chapter-page .epigraph { animation: none !important; } }
 </style>
 </head>
 <body>
